@@ -1,4 +1,4 @@
-# Pivogram — sociální síť na pivo
+# Popijeme — sociální síť na pivo
 
 Samostatná aplikace React/Vite + Supabase, veřejně na https://na-zdravi.vercel.app/. Zdrojový kód v tomto repozitáři automaticky nasazuje Vercel z větve `main`.
 
@@ -29,7 +29,7 @@ Lokální přihlášení vyžaduje povolit konkrétní lokální návratovou adr
 ## Komunita a data
 
 - `beer_entries`: vlastní zápisy, případné místo/město a výslovně zvolená viditelnost. Veřejné zápisy jsou čitelné i bez přihlášení; změny a smazání povoluje RLS pouze vlastníkovi. Uživatel může měnit viditelnost vlastních zápisů. Starší zápisy zůstávají po migraci soukromé.
-- `beer_catalog`: společná databáze piv, počátečních 188 položek. Nová piva doplňuje serverový trigger ze zápisů. Normalizované jméno a pivovar jsou unikátní; klienti nemohou přepisovat společné produkty.
+- `beer_catalog`: společná databáze piv, plněná zápisy uživatelů. Původní předvyplněné položky bez uživatelských vazeb odstraňuje migrace `20261030213545_user_catalog_only.sql` se soukromou zálohou. Nová piva doplňuje serverový trigger ze zápisů. Normalizované jméno a pivovar jsou unikátní; klienti nemohou přepisovat společné produkty.
 - `beer_library`: security-invoker view. Souhrnné hodnocení pouze z veřejných ochutnávek: nejprve průměr známek každého uživatele, potom průměr uživatelů. Nula znamená bez hodnocení. Každý uživatel tedy váží stejně bez ohledu na počet zápisů.
 - `beer_feed`: security-invoker view veřejných ochutnávek s přezdívkou, množstvím, datem, poznámkou, místem a počtem reakcí. E-maily nejsou součástí této datové vrstvy. Stránkování po 50 příspěvcích; sdílený odkaz `/?post=<uuid>` načte konkrétní veřejný zápis.
 - `beer_cheers`: unikátní reakce Na zdraví! na příspěvek a uživatele. Reagovat lze pouze na veřejný příspěvek. Odebrat lze jen vlastní reakci; reakce na skrytý příspěvek nejsou veřejné.
