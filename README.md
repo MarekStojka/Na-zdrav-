@@ -1,4 +1,4 @@
-# Na zdraví! — pivní zápisník
+# Pivogram — sociální síť na pivo
 
 Samostatná aplikace React/Vite + Supabase, veřejně na https://na-zdravi.vercel.app/. Zdrojový kód v tomto repozitáři automaticky nasazuje Vercel z větve `main`.
 
@@ -12,7 +12,7 @@ Přihlášení i vytvoření účtu probíhá přes Google pomocí Supabase OAut
 - Povolený návrat: `https://na-zdravi.vercel.app/`
 - Pro přístup veřejnosti je v Google Auth Platform potřeba odpovídající External audience a produkční stav aplikace.
 
-Není potřeba vlastní SMTP. Soukromý deník nevyžaduje přezdívku. Žebříček je dobrovolný a používá přezdívky, nikoli e-maily.
+Není potřeba vlastní SMTP. Účet nevyžaduje přezdívku; veřejné příspěvky bez ní používají označení Pivní objevitel. Žebříček je dobrovolný a používá přezdívky, nikoli e-maily.
 
 ## Lokální vývoj
 
@@ -26,15 +26,19 @@ npm run build
 
 Lokální přihlášení vyžaduje povolit konkrétní lokální návratovou adresu v Supabase. Vite konfigurace dovoluje také interní náhled na hostu `terminal.local`.
 
-## Data
+## Komunita a data
 
-- `beer_entries`: vlastní zápisy; RLS omezuje čtení, vložení a smazání podle `auth.uid()`.
-- `beer_profiles`: vlastní přezdívka a dobrovolný souhlas se zobrazením v žebříčku.
-- `beer_leaderboard()`: pouze přihlášeným vrací nejvýše 50 přezdívek a počtů různých ochutnaných produktů. Nevrací e-maily, ID ani soukromé zápisy.
-- Katalog obsahuje 188 položek s uvedenými zdroji, včetně sezónních a archivních produktů. Není kompletním seznamem piv v ČR.
-- Export vlastního deníku je JSON. Starší zápisy z prototypu Sites se nepřenášejí automaticky.
+- `beer_entries`: vlastní zápisy, případné místo/město a výslovně zvolená viditelnost. Veřejné zápisy jsou čitelné i bez přihlášení; změny a smazání povoluje RLS pouze vlastníkovi. Uživatel může měnit viditelnost vlastních zápisů. Starší zápisy zůstávají po migraci soukromé.
+- `beer_catalog`: společná databáze piv, počátečních 188 položek. Nová piva doplňuje serverový trigger ze zápisů. Normalizované jméno a pivovar jsou unikátní; klienti nemohou přepisovat společné produkty.
+- `beer_library`: security-invoker view. Souhrnné hodnocení pouze z veřejných ochutnávek: nejprve průměr známek každého uživatele, potom průměr uživatelů. Nula znamená bez hodnocení. Každý uživatel tedy váží stejně bez ohledu na počet zápisů.
+- `beer_feed`: security-invoker view veřejných ochutnávek s přezdívkou, množstvím, datem, poznámkou, místem a počtem reakcí. E-maily nejsou součástí této datové vrstvy. Stránkování po 50 příspěvcích; sdílený odkaz `/?post=<uuid>` načte konkrétní veřejný zápis.
+- `beer_cheers`: unikátní reakce Na zdraví! na příspěvek a uživatele. Reagovat lze pouze na veřejný příspěvek. Odebrat lze jen vlastní reakci; reakce na skrytý příspěvek nejsou veřejné.
+- `beer_wishlist`: soukromý seznam Chci ochutnat; RLS pouze pro vlastníka.
+- `beer_places`: uložené podniky s názvem/městem a volbou viditelnosti, úpravy pouze vlastníkem. `beer_venues` agreguje veřejné návštěvy a veřejně uložené podniky. Mapa je externí odkaz; aplikace nezjišťuje GPS a nevyžaduje placené mapové API.
+- `beer_profiles`: přezdívka vlastníka, veřejně čitelná, pokud má veřejnou ochutnávku. Žebříček dále vyžaduje dobrovolný souhlas `listed`.
+- Pivní pas: šest odznaků podle různých piv, stylů, pivovarů, hodnocených piv a navštívených míst. Bez odměn za vypité množství. PNG kartička 1080×1350 obsahuje jen přezdívku a souhrn objevů, bez míst, dat a poznámek.
 
-Databázová migrace je v `supabase/migrations/`. Izolaci uživatelů ověřuje `npm test` pomocí PGlite.
+Migrace jsou v `supabase/migrations/`. `npm test` ověřuje základní izolaci i veřejnou komunitu, soukromé zápisy/přání, deduplikaci, váhu hodnocení, reakce a oprávnění vlastníků na dvou účtech a anonymní roli pomocí PGlite. Export vlastního deníku je JSON. Starší zápisy z prototypu Sites se nepřenášejí automaticky.
 
 ## Vzhled
 

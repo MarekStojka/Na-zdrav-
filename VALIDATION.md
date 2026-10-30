@@ -15,3 +15,14 @@ Zatím neověřeno: živý projekt Supabase, doručování ověřovacích e-mail
 - Desktop browser QA and a 375 CSS pixel iframe layout check passed without horizontal overflow.
 - Google sign-in dialog and navigation to statistics checked. Auth/data logic is unchanged by the redesign; no new records or accounts were created for design QA.
 - TypeScript check and Vite production build passed.
+
+
+## Pivogram community — 2026-10-30
+
+- Community migration applied to project akllmenvonrwkqdejifo. 188 seeded products, zero invented reviews or visits.
+- PGlite checks passed: normalized product uniqueness, equal per-user rating weight, public-only feed and venue aggregation, anonymous reads limited by RLS, private diary/wishlist isolation, owner-only writes/deletes, forged-owner rejection, reaction uniqueness and cleanup.
+- Post-migration security advisors reported no new findings. The existing intentional opt-in leaderboard definer and password-protection warnings remain unchanged. Google sign-in does not use passwords.
+- Browser QA: public library loads real Supabase data, search Pilsner returns Pilsner Urquell; places empty state; 375 CSS pixel mobile layout has no horizontal overflow.
+- Share-card PNG generated and visually checked from explicitly fictional local-only inputs, without writing test posts to production.
+- Authenticated community behavior is covered by PostgreSQL tests; no real-user session was used to create public test posts in the browser.
+- Build and TypeScript checks passed.
