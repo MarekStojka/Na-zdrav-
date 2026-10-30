@@ -1,0 +1,1130 @@
+[
+  {
+    "beer": "Pilsner Urquell",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky"
+  },
+  {
+    "beer": "Proud",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky"
+  },
+  {
+    "beer": "Excelent 11",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky"
+  },
+  {
+    "beer": "Klasik",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/nase-znacky"
+  },
+  {
+    "beer": "Primus",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/nase-znacky"
+  },
+  {
+    "beer": "Budweiser Budvar Original",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar 33",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar 33 Nefiltr",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar Tmavý ležák",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar Reserve",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Original z čerstvého chmele",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar Výčepní",
+    "brewery": "Budějovický Budvar",
+    "style": "Jiné",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar Redix",
+    "brewery": "Budějovický Budvar",
+    "style": "Jiné",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Budvar Nealko",
+    "brewery": "Budějovický Budvar",
+    "style": "Nealkoholické",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Old Gold IPA",
+    "brewery": "Budějovický Budvar",
+    "style": "IPA",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "NEIPANDA",
+    "brewery": "Budějovický Budvar",
+    "style": "IPA",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Farmhouse Ale",
+    "brewery": "Budějovický Budvar",
+    "style": "Jiné",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Charitativní ležák",
+    "brewery": "Budějovický Budvar",
+    "style": "Ležák",
+    "source": "https://www.budejovickybudvar.cz/piva"
+  },
+  {
+    "beer": "Staropramen Jedenáctka",
+    "brewery": "Staropramen",
+    "style": "Ležák",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Dvanáctka",
+    "brewery": "Staropramen",
+    "style": "Ležák",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Granát",
+    "brewery": "Staropramen",
+    "style": "Ležák",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Extra chmel",
+    "brewery": "Staropramen",
+    "style": "Ležák",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Nefiltr",
+    "brewery": "Staropramen",
+    "style": "Ležák",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Desítka",
+    "brewery": "Staropramen",
+    "style": "Jiné",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Staropramen Nealko",
+    "brewery": "Staropramen",
+    "style": "Nealkoholické",
+    "source": "https://www.staropramen.cz/"
+  },
+  {
+    "beer": "Zubr Gradus 12",
+    "brewery": "Zubr",
+    "style": "Ležák",
+    "source": "https://www.zubr.cz/"
+  },
+  {
+    "beer": "Zubr Grand 11",
+    "brewery": "Zubr",
+    "style": "Ležák",
+    "source": "https://www.zubr.cz/"
+  },
+  {
+    "beer": "Zubr Grál 10",
+    "brewery": "Zubr",
+    "style": "Jiné",
+    "source": "https://www.zubr.cz/"
+  },
+  {
+    "beer": "Zubr Gold",
+    "brewery": "Zubr",
+    "style": "Jiné",
+    "source": "https://www.zubr.cz/"
+  },
+  {
+    "beer": "Zubr Yuzu",
+    "brewery": "Zubr",
+    "style": "Nealkoholické",
+    "source": "https://www.zubr.cz/"
+  },
+  {
+    "beer": "Holba Keprník 12",
+    "brewery": "Holba",
+    "style": "Ležák",
+    "source": "https://www.holba.cz/"
+  },
+  {
+    "beer": "Holba Šerák 11",
+    "brewery": "Holba",
+    "style": "Ležák",
+    "source": "https://www.holba.cz/"
+  },
+  {
+    "beer": "Holba Horská 10",
+    "brewery": "Holba",
+    "style": "Jiné",
+    "source": "https://www.holba.cz/"
+  },
+  {
+    "beer": "Holba Ryzí nealko",
+    "brewery": "Holba",
+    "style": "Nealkoholické",
+    "source": "https://www.holba.cz/"
+  },
+  {
+    "beer": "Holba Lesní malina",
+    "brewery": "Holba",
+    "style": "Jiné",
+    "source": "https://www.holba.cz/"
+  },
+  {
+    "beer": "Litovel Bohatá 12",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Vyzrálá 11",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Moravan",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Premium Dark",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Jarní zelený ležák",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Višňový ležák",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Štědrá 12",
+    "brewery": "Litovel",
+    "style": "Ležák",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Úrodná 10",
+    "brewery": "Litovel",
+    "style": "Jiné",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Svěží pomelo",
+    "brewery": "Litovel",
+    "style": "Jiné",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Černý citron",
+    "brewery": "Litovel",
+    "style": "Jiné",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Gustav 13",
+    "brewery": "Litovel",
+    "style": "Jiné",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Černý citron nealko",
+    "brewery": "Litovel",
+    "style": "Nealkoholické",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Litovel Letní pšeničné pivo",
+    "brewery": "Litovel",
+    "style": "Pšeničné",
+    "source": "https://www.litovel.cz/"
+  },
+  {
+    "beer": "Ferdinand Premium 12",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Bezlepkový Premium 12",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Dvorní ležák 12",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Diplomat 11",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Řezaný ležák 11",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Max 11",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Sedm kulí 13",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Sofie 10",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand d’Este 15",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Ferdinand Nealkoholické světlé",
+    "brewery": "Ferdinand",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarferdinand.cz/"
+  },
+  {
+    "beer": "Rychtář Svatováclavský ležák",
+    "brewery": "Rychtář",
+    "style": "Ležák",
+    "source": "https://www.pivovar-rychtar.cz/"
+  },
+  {
+    "beer": "Rychtář Harmonie",
+    "brewery": "Rychtář",
+    "style": "Jiné",
+    "source": "https://www.pivovar-rychtar.cz/"
+  },
+  {
+    "beer": "Bernard Nefiltrovaná 12",
+    "brewery": "Bernard",
+    "style": "Ležák",
+    "source": "https://www.bernard.cz/"
+  },
+  {
+    "beer": "Bernard Černá 12",
+    "brewery": "Bernard",
+    "style": "Ležák",
+    "source": "https://www.bernard.cz/"
+  },
+  {
+    "beer": "Bernard India Pale Ale",
+    "brewery": "Bernard",
+    "style": "IPA",
+    "source": "https://www.bernard.cz/"
+  },
+  {
+    "beer": "Bernard s čistou hlavou Švestka",
+    "brewery": "Bernard",
+    "style": "Nealkoholické",
+    "source": "https://www.bernard.cz/"
+  },
+  {
+    "beer": "Svijanský Máz 11",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "ŠLIK Zámek 11",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijany 450",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanský fanda 11",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanský Rytíř 12",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Kvasničák 13",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanský Kníže 13",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanská Kněžna 13",
+    "brewery": "Svijany",
+    "style": "Ležák",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanská Desítka 10",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Baron 15",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Bidlovka",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svátek za studena chmelený",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "SHINE",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "DUX",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijany 20",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Pivo přímo ze sklepa",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "CECILIA",
+    "brewery": "Svijany",
+    "style": "Jiné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Weizen",
+    "brewery": "Svijany",
+    "style": "Pšeničné",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanský Vozka",
+    "brewery": "Svijany",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Vozka yuzu a bergamot",
+    "brewery": "Svijany",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Vozka černý rybíz a limetka",
+    "brewery": "Svijany",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Svijanský Vozka angrešt a rybíz",
+    "brewery": "Svijany",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarsvijany.cz/"
+  },
+  {
+    "beer": "Primátor 11 Ležák",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 11 Ležák nefiltrovaný",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 12 Fest hořká",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Premium",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Dark",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Tchyně",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 13 Polotmavé",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 16 Exkluziv",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Jubilejní ležák",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Single Hop Lager",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Single Hop Lager 2023",
+    "brewery": "Primátor",
+    "style": "Ležák",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Antonín",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 21 Imperial",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 24 Double",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2026 Jarní",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2025 Medové pivo",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2023 Medové pivo",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2023 Jarní",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2022 Medové pivo",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2021 Medové pivo",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2020 Špringl",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2019 Špringl",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2018 Špringl",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2017 Medové pivo",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2017 Evergreen",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2017 Špringl",
+    "brewery": "Primátor",
+    "style": "Jiné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor APA",
+    "brewery": "Primátor",
+    "style": "Pale Ale",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor EPA",
+    "brewery": "Primátor",
+    "style": "Pale Ale",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor 2017 APAč",
+    "brewery": "Primátor",
+    "style": "Pale Ale",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor IPA",
+    "brewery": "Primátor",
+    "style": "IPA",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Weizen",
+    "brewery": "Primátor",
+    "style": "Pšeničné",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Stout",
+    "brewery": "Primátor",
+    "style": "Stout / Porter",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Nealko",
+    "brewery": "Primátor",
+    "style": "Nealkoholické",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Free Tchyně",
+    "brewery": "Primátor",
+    "style": "Nealkoholické",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Free Tchyně Pomelo",
+    "brewery": "Primátor",
+    "style": "Nealkoholické",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Nealko Tropické ovoce yuzu",
+    "brewery": "Primátor",
+    "style": "Nealkoholické",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Primátor Nealko Černý rybíz a limetka",
+    "brewery": "Primátor",
+    "style": "Nealkoholické",
+    "source": "https://primator.cz/produkty/"
+  },
+  {
+    "beer": "Krušovice Bohém",
+    "brewery": "Krušovice",
+    "style": "Ležák",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice 11",
+    "brewery": "Krušovice",
+    "style": "Ležák",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Ležák 12",
+    "brewery": "Krušovice",
+    "style": "Ležák",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Ležák",
+    "brewery": "Krušovice",
+    "style": "Ležák",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Imperial",
+    "brewery": "Krušovice",
+    "style": "Ležák",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Originál 10",
+    "brewery": "Krušovice",
+    "style": "Jiné",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Černé",
+    "brewery": "Krušovice",
+    "style": "Jiné",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Pšeničné",
+    "brewery": "Krušovice",
+    "style": "Pšeničné",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Krušovice Hořké Nealko",
+    "brewery": "Krušovice",
+    "style": "Nealkoholické",
+    "source": "https://www.krusovice.cz/cs/nase-piva"
+  },
+  {
+    "beer": "Ostravar 12",
+    "brewery": "Ostravar",
+    "style": "Ležák",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Ostravar Mustang 11",
+    "brewery": "Ostravar",
+    "style": "Ležák",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Ostravar Mustang 12 hořký",
+    "brewery": "Ostravar",
+    "style": "Ležák",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Ostravar 10",
+    "brewery": "Ostravar",
+    "style": "Jiné",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Ostravar Černá Barbora",
+    "brewery": "Ostravar",
+    "style": "Jiné",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Ostravar Rufus",
+    "brewery": "Ostravar",
+    "style": "Jiné",
+    "source": "https://www.ostravar.cz/pivo/"
+  },
+  {
+    "beer": "Kozel 12",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Kozel 11",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Kozel Řezaný 11",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Kozel 10",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Kozel Černý",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Kozel Nealko",
+    "brewery": "Velkopopovický Kozel",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/nase-znacky/velkopopovicky-kozel"
+  },
+  {
+    "beer": "Ferdinand Vídeňský ležák 13",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Ernst 11",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Zelený ležák 11",
+    "brewery": "Ferdinand",
+    "style": "Ležák",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Pěkné číslo 14",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Bezlepkové Sedm kulí 13",
+    "brewery": "Ferdinand",
+    "style": "Jiné",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Slušné číslo",
+    "brewery": "Ferdinand",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Ferdinand Nealkoholické světlé bezlepkové",
+    "brewery": "Ferdinand",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarferdinand.cz/sortiment-1"
+  },
+  {
+    "beer": "Kocour K31",
+    "brewery": "Kocour",
+    "style": "Jiné",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour V3 Rauch",
+    "brewery": "Kocour",
+    "style": "Jiné",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour V3 Tokaj",
+    "brewery": "Kocour",
+    "style": "Jiné",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour Ken",
+    "brewery": "Kocour",
+    "style": "Jiné",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour Samuraj",
+    "brewery": "Kocour",
+    "style": "Pale Ale",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour Gypsy Porter",
+    "brewery": "Kocour",
+    "style": "Stout / Porter",
+    "source": "https://www.pivovar-kocour.cz/cz/nase-pivo/"
+  },
+  {
+    "beer": "Kocour 12 Višňový ležák",
+    "brewery": "Kocour",
+    "style": "Ležák",
+    "source": "https://www.pivovarkocour.cz/"
+  },
+  {
+    "beer": "Kocour 10 Studentská",
+    "brewery": "Kocour",
+    "style": "Jiné",
+    "source": "https://www.pivovarkocour.cz/"
+  },
+  {
+    "beer": "Kocour Tom Cat",
+    "brewery": "Kocour",
+    "style": "Nealkoholické",
+    "source": "https://www.pivovarkocour.cz/"
+  },
+  {
+    "beer": "Gambrinus 11",
+    "brewery": "Gambrinus",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus 12",
+    "brewery": "Gambrinus",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus Nefiltrovaný ležák",
+    "brewery": "Gambrinus",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus Patron 12",
+    "brewery": "Gambrinus",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus 10",
+    "brewery": "Gambrinus",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus Originál 10",
+    "brewery": "Gambrinus",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Gambrinus Dry",
+    "brewery": "Gambrinus",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/gambrinus"
+  },
+  {
+    "beer": "Radegast Ryze hořká 12",
+    "brewery": "Radegast",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Radegast Temně hořká 12",
+    "brewery": "Radegast",
+    "style": "Ležák",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Radegast Rázná 10",
+    "brewery": "Radegast",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Radegast Ratar",
+    "brewery": "Radegast",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Radegast Extra hořká 15",
+    "brewery": "Radegast",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Radegast ROG IPA",
+    "brewery": "Radegast",
+    "style": "IPA",
+    "source": "https://www.prazdroj.cz/znacka/radegast"
+  },
+  {
+    "beer": "Master Tmavý 18",
+    "brewery": "Plzeňský Prazdroj",
+    "style": "Jiné",
+    "source": "https://www.prazdroj.cz/znacka/master"
+  },
+  {
+    "beer": "Birell Světlý",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Řezaný",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Za studena chmelený",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Stylu IPA",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Pomelo & Grep",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Polotmavý Citrón",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Malina & Limetka",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Višeň & Ostružina",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Sicilský Citrón",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Energy Pomelo & Grep",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Energy Zelený čaj & Broskev",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Vitality Mango & Citrón",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Vitality Citrus & Zázvor",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  },
+  {
+    "beer": "Birell Vitality Marakuja & Maté",
+    "brewery": "Birell",
+    "style": "Nealkoholické",
+    "source": "https://www.prazdroj.cz/znacka/birell"
+  }
+]
