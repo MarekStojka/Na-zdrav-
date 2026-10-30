@@ -1,5 +1,36 @@
 import {useState} from 'react';
-import {X,Mail,Beer} from 'lucide-react';
+import {X,Beer} from 'lucide-react';
 import {requireClient,errorMessage} from './supabase';
-export default function AuthDialog({onClose}:{onClose:()=>void,recovery?:boolean}){const [email,setEmail]=useState(''),[sent,setSent]=useState(false),[codeMode,setCodeMode]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[error,setError]=useState('');
-return <div className="overlay"><section className="modal auth-modal" role="dialog" aria-modal="true" aria-label="Přihlášení e-mailem"><button className="close" aria-label="Zavřít" onClick={onClose} disabled={busy}><X/></button><span className="eyebrow"><Beer size={16}/> VÍTEJ V PARTĚ</span><h2>Jeden e-mail.<br/>Celý pivní zápisník.</h2><p className="muted">Bez hesla a bez dalších účtů. Zadej svůj e-mail, ověř ho a můžeš začít. Pokud jsi tu poprvé, účet vznikne automaticky.</p>{message&&<div className="auth-message" role="status">{message}</div>}{error&&<div className="auth-error" role="alert">{error}</div>}<form onSubmit={async e=>{e.preventDefault();setBusy(true);setError('');setMessage('');const f=new FormData(e.currentTarget);try{const c=requireClient();if(codeMode){const token=String(f.get('code')||'').trim();const {error}=await c.auth.verifyOtp({email:email.trim(),token,type:'email'});if(error)throw error;onClose()}else{const {error}=await c.auth.signInWithOtp({email:email.trim(),options:{shouldCreateUser:true,emailRedirectTo:window.location.origin+'/'} });if(error)throw error;setSent(true);setMessage('Zkontroluj e-mailovou schránku a otevři přihlašovací odkaz. Pokud zprávu nevidíš, zkus i spam.')}}catch(e:any){if(e?.code==='otp_expired')setError('Kód nebo odkaz vypršel. Nech si poslat nový.');else if(e?.code==='email_address_not_authorized')setError('Odesílání přihlašovacích e-mailů ještě není nastavené pro všechny adresy. Zkus to prosím později.');else setError(errorMessage(e))}finally{setBusy(false)}}}><label>E-mail<input name="email" type="email" required autoComplete="email" value={email} onChange={e=>{setEmail(e.target.value);setSent(false);setMessage('')}} placeholder="tvuj@email.cz" autoFocus readOnly={codeMode}/></label>{codeMode&&<label>Ověřovací kód<input name="code" required inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,10}" minLength={6} maxLength={10} placeholder="Kód z e-mailu"/></label>}<button className="primary full" disabled={busy}><Mail size={17}/>{busy?'Chvilku prosím…':codeMode?'Ověřit a přihlásit se':sent?'Poslat nový odkaz':'Poslat přihlašovací odkaz'}</button></form><div className="auth-links">{sent&&!codeMode&&<button onClick={()=>{setCodeMode(true);setError('');setMessage('Pokud zpráva obsahuje ověřovací kód, zadej ho sem.')}}>Mám ověřovací kód</button>}{codeMode&&<button onClick={()=>{setCodeMode(false);setError('');setMessage('')}}>← Poslat odkaz znovu</button>}</div><p className="muted auth-privacy">Tvůj e-mail ani soukromé zápisy se ostatním nezobrazují. Do žebříčku se zapojíš dobrovolně pod přezdívkou. Pro osoby od 18 let.</p></section></div>}
+
+export default function AuthDialog({onClose}:{onClose:()=>void,recovery?:boolean}) {
+  const [busy,setBusy]=useState(false);
+  const [error,setError]=useState('');
+
+  async function signIn() {
+    setBusy(true);
+    setError('');
+    try {
+      const {error}=await requireClient().auth.signInWithOAuth({
+        provider:'google',
+        options:{redirectTo:window.location.origin+'/'},
+      });
+      if(error)throw error;
+    } catch(error) {
+      setError(errorMessage(error));
+      setBusy(false);
+    }
+  }
+
+  return <div className="overlay"><section className="modal auth-modal" role="dialog" aria-modal="true" aria-label="Přihlášení přes Google">
+    <button className="close" aria-label="Zavřít" onClick={onClose} disabled={busy}><X/></button>
+    <span className="eyebrow"><Beer size={16}/> VÍTEJ V PARTĚ</span>
+    <h2>Tvůj Google účet.<br/>Tvůj pivní zápisník.</h2>
+    <p className="muted">Vyber svůj Google účet a můžeš začít. Při prvním přihlášení ti zápisník vytvoříme automaticky.</p>
+    {error&&<div className="auth-error" role="alert">{error}</div>}
+    <button className="secondary full" onClick={signIn} disabled={busy}>
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.23c1.89-1.74 2.99-4.3 2.99-7.36Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.61-2.41l-3.23-2.51c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.76-5.59-4.12H3.07v2.59A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.41 13.92a6 6 0 0 1 0-3.84V7.49H3.07a10 10 0 0 0 0 9.02l3.34-2.59Z"/><path fill="#EA4335" d="M12 5.96c1.47 0 2.79.5 3.82 1.49l2.87-2.87A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.93 5.49l3.34 2.59C7.2 7.72 9.4 5.96 12 5.96Z"/></svg>
+      {busy?'Přesměrovávám…':'Přihlásit přes Google'}
+    </button>
+    <p className="muted auth-privacy">Tvůj e-mail ani soukromé zápisy se ostatním nezobrazují. Do žebříčku se zapojíš dobrovolně pod přezdívkou. Pro osoby od 18 let.</p>
+  </section></div>;
+}
