@@ -9,7 +9,7 @@ export function useClub(userId:string|null){
    userId?must(c.from('beer_friendships').select('*').order('created_at',{ascending:false}).limit(1000)):[],
    userId?must(c.from('beer_follows').select('*').order('created_at',{ascending:false}).limit(1000)):[],
    userId?must(c.from('beer_presence').select('*').gt('expires_at',new Date().toISOString()).limit(1000)):[],
-   must(c.from('beer_meetups').select('*').gte('starts_at',new Date(Date.now()-4*3600000).toISOString()).order('starts_at').limit(100))]);
+   must(c.from('beer_meetups').select('*').gte('starts_at',new Date(Date.now()-366*86400000).toISOString()).order('starts_at',{ascending:false}).limit(1000))]);
   const rsvps=userId&&meetups.length?await must(c.from('beer_rsvps').select('*').in('meetup_id',meetups.map((m:any)=>m.id)).limit(1000)):[];
   const ids=[...new Set([userId,...friends.flatMap((f:any)=>[f.requester,f.recipient]),...follows.flatMap((f:any)=>[f.user_id,f.target_id]),...presence.map((p:any)=>p.user_id),...meetups.map((m:any)=>m.host_id),...rsvps.map((r:any)=>r.user_id)].filter(Boolean))];
   const profiles=ids.length?await must(c.from('beer_profiles').select('user_id,nickname,friend_code,selected_tag').in('user_id',ids)):[];
@@ -25,7 +25,7 @@ export async function removeFriend(id:string){return must(requireClient().from('
 export async function follow(id:string,on:boolean,userId:string){return must(on?requireClient().from('beer_follows').insert({target_id:id}):requireClient().from('beer_follows').delete().eq('target_id',id).eq('user_id',userId));}
 export async function setPresence(place:string,city:string){return must(requireClient().from('beer_presence').upsert({user_id:(await requireClient().auth.getUser()).data.user?.id,place_name:place.trim(),place_city:city.trim(),expires_at:new Date(Date.now()+2*3600000).toISOString()}));}
 export async function endPresence(userId:string){return must(requireClient().from('beer_presence').delete().eq('user_id',userId));}
-export async function rsvp(id:string,going:boolean,userId:string){return must(going?requireClient().from('beer_rsvps').insert({meetup_id:id}):requireClient().from('beer_rsvps').delete().eq('meetup_id',id).eq('user_id',userId));}
+export async function rsvp(id:string,going:boolean,userId:string){return must(requireClient().from('beer_rsvps').upsert({meetup_id:id,user_id:userId,status:going?'accepted':'declined'},{onConflict:'meetup_id,user_id'}));}
 export async function createMeetup(d:any){return must(requireClient().from('beer_meetups').insert(d));}
 export async function removeMeetup(id:string){return must(requireClient().from('beer_meetups').delete().eq('id',id));}
 export const meetingTime=(date:string)=>new Date(date).toLocaleString('cs-CZ',{timeZone:'Europe/Prague',dateStyle:'medium',timeStyle:'short'});

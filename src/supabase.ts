@@ -23,7 +23,7 @@ export async function saveData(d:any){
   result=await c.from('beer_preferences').upsert({user_id:user.id,home_city:String(d.home_city||'').trim()});
  }else{
   const {beer,brewery,style,volume,count,date,rating,note,place_name,place_city,is_public,photo_path}=d;
-  result=await c.from('beer_entries').insert({...(d.id?{id:d.id}:{}),user_id:user.id,beer:String(beer).trim(),brewery:String(brewery).trim(),style,volume,count,date,rating,note:note||'',place_name:String(place_name||'').trim(),place_city:String(place_city||'').trim(),is_public:!!is_public,photo_path:photo_path||null});
+  result=await c.from('beer_entries').insert({...(d.id?{id:d.id}:{}),user_id:user.id,beer:String(beer).trim(),brewery:String(brewery).trim(),style,volume,count,date,rating,note:note||'',place_name:String(place_name||'').trim(),place_city:String(place_city||'').trim(),is_public:d.visibility?d.visibility==='public':!!is_public,visibility:d.visibility||(is_public?'public':'private'),serving_kind:d.serving_kind||'unknown',photo_path:photo_path||null});
  }
  if(result.error)throw result.error;
 }

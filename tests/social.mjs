@@ -4,7 +4,7 @@ import fs from 'node:fs';import assert from 'node:assert/strict';
 const db=new PGlite();
 await db.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,public to anon,authenticated;create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid default gen_random_uuid(),bucket_id text,name text,primary key(bucket_id,name));alter table storage.objects enable row level security;grant usage on schema storage to anon,authenticated;grant select on storage.objects to anon;grant select,insert,delete on storage.objects to authenticated;`);
 const dir=new URL('../supabase/migrations/',import.meta.url);
-for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
+for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')||f.endsWith('_venues_and_conversations.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
 const a='aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',b='bbbbbbbb-bbbb-4bbb-bbbb-bbbbbbbbbbbb',c='cccccccc-cccc-4ccc-accc-cccccccccccc';
 await db.query('insert into auth.users values($1),($2),($3)',[a,b,c]);
 const as=async(id)=>{await db.exec('reset role;set role '+(id?'authenticated':'anon'));await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id||'']);};
@@ -59,4 +59,45 @@ await as(b);assert.equal((await rows('select * from public.beer_achievements')).
 await as(a);await db.query('delete from public.beer_entries');assert((await rows('select public.sync_beer_achievements() as result'))[0].result.awards.some(x=>x.badge_id==='beers-5'));
 await db.query('delete from public.beer_friendships where id=$1',[f.id]);assert.equal((await rows('select * from public.beer_presence')).length,0,'Removing friendship revokes presence');
 await as(null);assert.equal((await rows('select * from public.beer_badge_definitions')).length,167);await assert.rejects(()=>db.query('select * from public.beer_achievements'));
+// Three audiences protect rows, comments, notifications and photos consistently.
+await as(a);const friend=(await rows('insert into public.beer_friendships(recipient) values($1) returning id',[b]))[0];
+await as(b);await db.query("update public.beer_friendships set status='accepted' where id=$1",[friend.id]);
+await as(a);const socialEntry=(await rows("insert into public.beer_entries(beer,brewery,style,volume,count,date,rating,visibility,serving_kind,place_name,place_city) values('Friends beer','Test brewery','Ležák',0.5,1,current_date,4,'friends','draft','Secret venue','Private city') returning id"))[0];
+await as(null);assert.equal((await rows('select * from public.beer_feed where id=$1',[socialEntry.id])).length,0);
+await as(c);assert.equal((await rows('select * from public.beer_entries where id=$1',[socialEntry.id])).length,0);
+await assert.rejects(()=>db.query("insert into public.beer_comments(entry_id,body) values($1,'Intruder')",[socialEntry.id]));
+await as(b);assert.equal((await rows('select * from public.beer_feed where id=$1',[socialEntry.id])).length,1);
+const comment=(await rows("insert into public.beer_comments(entry_id,body) values($1,'Only friends can read') returning id",[socialEntry.id]))[0];
+await db.query('insert into public.beer_cheers(entry_id) values($1)',[socialEntry.id]);
+await as(a);assert.equal((await rows('select * from public.beer_notifications where entry_id=$1',[socialEntry.id])).length,2);
+const reply=(await rows("insert into public.beer_comments(entry_id,parent_id,body) values($1,$2,'Reply to friend') returning id",[socialEntry.id,comment.id]))[0];
+await as(b);assert.equal((await rows("select * from public.beer_notifications where kind='reply' and entry_id=$1",[socialEntry.id])).length,1);
+await db.query('update public.beer_notifications set read_at=now()');assert.equal((await rows('select * from public.beer_notifications where read_at is null')).length,0);
+await assert.rejects(()=>db.query("insert into public.beer_notifications(recipient_id,actor_id,kind,entry_id) values($1,$2,'comment',$3)",[a,b,socialEntry.id]));
+await as(a);await db.query("update public.beer_entries set visibility='private' where id=$1",[socialEntry.id]);
+await as(b);assert.equal((await rows('select * from public.beer_comments where entry_id=$1',[socialEntry.id])).length,0);assert.equal((await rows('select * from public.beer_notifications where entry_id=$1',[socialEntry.id])).length,0);
+await as(a);await db.query("update public.beer_entries set visibility='friends' where id=$1",[socialEntry.id]);await db.query('delete from public.beer_friendships where id=$1',[friend.id]);
+await as(b);assert.equal((await rows('select * from public.beer_feed where id=$1',[socialEntry.id])).length,0);assert.equal((await rows('select * from public.beer_notifications where entry_id=$1',[socialEntry.id])).length,0);
+// Private and friends entries never contribute to public venue histories or regular counts.
+await as(null);assert.equal((await rows("select * from public.beer_venue_beers where name_key='secret venue'")).length,0);
+await as(a);for(let i=0;i<5;i++)await db.query("insert into public.beer_entries(beer,brewery,style,volume,count,date,rating,visibility,serving_kind,place_name,place_city) values('Public beer','Test brewery','Ležák',0.5,1,current_date-$1::int,4,'public','bottle','Public venue','Test city')",[i]);
+for(let i=0;i<6;i++)await db.query("insert into public.beer_entries(beer,brewery,style,volume,count,date,rating,visibility,place_name,place_city) values('Same day','Test brewery','Ležák',0.5,1,current_date,4,'public','One day venue','Test city')");
+await db.query("insert into public.beer_venue_wishlist(name,city) values('Public venue','Test city')");
+await db.query("insert into public.beer_venue_ratings(name,city,stars) values('Public venue','Test city',5)");
+await assert.rejects(()=>db.query("insert into public.beer_venue_ratings(name,city,stars) values('Public venue','Test city',4)"));
+await as(b);assert.equal((await rows('select * from public.beer_venue_wishlist')).length,0);await db.query("update public.beer_venue_ratings set stars=1 where user_id=$1",[a]);await db.query("insert into public.beer_venue_ratings(name,city,stars) values('Public venue','Test city',3)");
+await as(null);let venue=(await rows("select * from public.beer_venue_details where name_key='public venue'"))[0];assert.equal(Number(venue.regulars),1);assert.equal(Number(venue.rating_average),4);assert.equal(Number(venue.ratings_count),2);assert.equal(Number((await rows("select * from public.beer_venue_details where name_key='one day venue'"))[0].regulars),0);
+assert.equal((await rows("select * from public.beer_venue_beers where name_key='public venue'"))[0].serving_kind,'bottle');
+// Accept/decline is durable and only the responder can change it.
+await as(b);await db.query("insert into public.beer_rsvps(meetup_id,status) values($1,'declined')",[event.id]);await db.query("update public.beer_rsvps set status='accepted' where meetup_id=$1 and user_id=$2",[event.id,b]);
+await as(c);await db.query("update public.beer_rsvps set status='declined' where meetup_id=$1 and user_id=$2",[event.id,b]);
+await as(b);assert.equal((await rows('select status from public.beer_rsvps where meetup_id=$1 and user_id=$2',[event.id,b]))[0].status,'accepted');
+// Future offer management cannot be claimed by an ordinary account.
+await assert.rejects(()=>db.query("insert into public.beer_venue_managers values($1,'public venue','test city')",[b]));
+await assert.rejects(()=>db.query("insert into public.beer_venue_offers(name_key,city_key,kind,title,starts_at,ends_at,published) values('public venue','test city','coupon','Forged coupon',now(),now()+interval '1 day',true)"));
+await db.exec('reset role');await db.query("insert into public.beer_venue_managers values($1,'public venue','test city')",[b]);await as(b);
+await db.query("insert into public.beer_venue_offers(name_key,city_key,kind,title,starts_at,ends_at,published) values('public venue','test city','coupon','Real draft',now()-interval '1 hour',now()+interval '1 day',false)");
+await as(null);assert.equal((await rows('select * from public.beer_venue_offers')).length,0);
+await as(b);await db.query('update public.beer_venue_offers set published=true');await as(null);assert.equal((await rows('select * from public.beer_venue_offers')).length,1);
+console.log('PASS: three post audiences, friend revocation, private notifications, comment replies, regulars by five distinct days, venue ratings/wishes, serving histories, durable RSVP and verified-only offers.');
 await db.close();console.log('PASS: 167 definitions, immutable friendship codes, accepted friendships, private home city and expiring presence, public/private invites, RSVP ownership, private photos, permanent server-verified awards and earned titles across three accounts and anonymous access.');
