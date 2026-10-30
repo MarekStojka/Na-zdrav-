@@ -4,7 +4,7 @@ import fs from 'node:fs';import assert from 'node:assert/strict';
 const db=new PGlite();
 await db.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,public to anon,authenticated;create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid default gen_random_uuid(),bucket_id text,name text,primary key(bucket_id,name));alter table storage.objects enable row level security;grant usage on schema storage to anon,authenticated;grant select on storage.objects to anon;grant select,insert,delete on storage.objects to authenticated;`);
 const dir=new URL('../supabase/migrations/',import.meta.url);
-for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')||f.endsWith('_venues_and_conversations.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
+for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')||f.endsWith('_venues_and_conversations.sql')||f.endsWith('_multiple_meetup_invitees.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
 const a='aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',b='bbbbbbbb-bbbb-4bbb-bbbb-bbbbbbbbbbbb',c='cccccccc-cccc-4ccc-accc-cccccccccccc';
 await db.query('insert into auth.users values($1),($2),($3)',[a,b,c]);
 const as=async(id)=>{await db.exec('reset role;set role '+(id?'authenticated':'anon'));await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id||'']);};
@@ -99,5 +99,30 @@ await db.exec('reset role');await db.query("insert into public.beer_venue_manage
 await db.query("insert into public.beer_venue_offers(name_key,city_key,kind,title,starts_at,ends_at,published) values('public venue','test city','coupon','Real draft',now()-interval '1 hour',now()+interval '1 day',false)");
 await as(null);assert.equal((await rows('select * from public.beer_venue_offers')).length,0);
 await as(b);await db.query('update public.beer_venue_offers set published=true');await as(null);assert.equal((await rows('select * from public.beer_venue_offers')).length,1);
+// A single private event reaches multiple friends, with isolated replies and notifications.
+const d='dddddddd-dddd-4ddd-addd-dddddddddddd';
+await db.exec('reset role');await db.query('insert into auth.users values($1)',[d]);
+await as(d);await db.query("insert into public.beer_profiles(nickname) values('Delta')");
+await as(a);
+for(const id of [b,c]){
+ const request=(await rows('insert into public.beer_friendships(recipient) values($1) returning id',[id]))[0];
+ await as(id);await db.query("update public.beer_friendships set status='accepted' where id=$1",[request.id]);await as(a);
+}
+const group=(await rows("insert into public.beer_meetups(title,place_name,place_city,starts_at,visibility,invited_ids) values('Parta u jednoho stolu','U stolu','Náchod',now()+interval '1 day','private',$1) returning *",[[b,c,b]]))[0];
+assert.deepEqual(group.invited_ids,[b,c],'Duplicate selections are normalized');
+for(const id of [b,c]){await as(id);assert.equal((await rows('select id from public.beer_meetups where id=$1',[group.id])).length,1);assert.equal((await rows("select id from public.beer_notifications where meetup_id=$1 and kind='invite'",[group.id])).length,1);}
+await as(b);await db.query("insert into public.beer_rsvps(meetup_id,status) values($1,'accepted')",[group.id]);
+await as(c);await db.query("insert into public.beer_rsvps(meetup_id,status) values($1,'declined')",[group.id]);
+await db.query("update public.beer_rsvps set status='declined' where meetup_id=$1 and user_id=$2",[group.id,b]);
+await as(a);assert.equal((await rows("select * from public.beer_notifications where meetup_id=$1 and kind='rsvp'",[group.id])).length,2);
+assert.deepEqual((await rows('select status from public.beer_rsvps where meetup_id=$1 order by user_id',[group.id])).map(r=>r.status),['accepted','declined']);
+for(const id of [d,null]){await as(id);assert.equal((await rows('select id from public.beer_meetups where id=$1',[group.id])).length,0);if(id){assert.equal((await rows('select id from public.beer_notifications where meetup_id=$1',[group.id])).length,0);assert.equal((await rows('select * from public.beer_rsvps where meetup_id=$1',[group.id])).length,0);await assert.rejects(()=>db.query('insert into public.beer_rsvps(meetup_id) values($1)',[group.id]));}}
+await as(a);
+for(const ids of [[],[d],[a],[b,d],[null]])await assert.rejects(()=>db.query("insert into public.beer_meetups(place_name,place_city,starts_at,visibility,invited_ids) values('Bad invite','City',now()+interval '1 day','private',$1)",[ids]));
+await assert.rejects(()=>db.query("insert into public.beer_meetups(place_name,place_city,starts_at,visibility,invited_ids) values('Public leak','City',now()+interval '1 day','public',$1)",[[b,c]]));
+const legacy=(await rows("insert into public.beer_meetups(place_name,place_city,starts_at,visibility,invited_id) values('Legacy client','City',now()+interval '1 day','private',$1) returning *",[b]))[0];assert.deepEqual(legacy.invited_ids,[b]);
+await db.query('delete from public.beer_meetups where id=$1',[group.id]);
+await as(b);assert.equal((await rows('select * from public.beer_notifications where meetup_id=$1',[group.id])).length,0);assert.equal((await rows('select * from public.beer_rsvps where meetup_id=$1',[group.id])).length,0);
+console.log('PASS: multiple private invitees, one notification each, independent RSVP, outsiders denied, invalid recipients rejected, old clients compatible, cancellation cleanup.');
 console.log('PASS: three post audiences, friend revocation, private notifications, comment replies, regulars by five distinct days, venue ratings/wishes, serving histories, durable RSVP and verified-only offers.');
 await db.close();console.log('PASS: 167 definitions, immutable friendship codes, accepted friendships, private home city and expiring presence, public/private invites, RSVP ownership, private photos, permanent server-verified awards and earned titles across three accounts and anonymous access.');

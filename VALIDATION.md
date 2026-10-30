@@ -47,3 +47,9 @@ Zatím neověřeno: živý projekt Supabase, doručování ověřovacích e-mail
 - Bezpečnostní kontrola po hlavní migraci nepřidala nálezy; zůstávají dříve popsaná upozornění na záměrný opt-in žebříček a ochranu uniklých hesel (aplikace používá Google).
 - Ověřena shoda všech 167 metrik, cílů a českých popisů mezi zdroji a produkční databází pomocí kontrolního součtu.
 - Sdílecí odkaz na přítele ověřen i při přihlášení: po místním OAuth návratu se obnoví hledaný kód a odpovídající profil, bez automatického odesílání žádosti.
+
+## Více příjemců události — 31. 10. 2026
+
+`npm test` a `npm run build` prošly. Databázový test ověřuje dva příjemce jedné události, deduplikaci, samostatná oznámení, nezávislé přijetí/odmítnutí, zákaz odpovědi za jiného, skrytí před cizím účtem a anonymním návštěvníkem, odmítnutí prázdného seznamu / sebe / nepřátel / null a kompatibilitu starého klienta. Zrušení události odstraní související odpovědi i oznámení. Místní prohlížeč ověřil povinný výběr, jednotlivá zaškrtávátka, vybrat vše/zrušit výběr a uložení jedné skupinové události přes API. Testovací data vznikala pouze v místní fixture.
+
+Kontrola Supabase: žádné nové upozornění k této migraci. Existující výjimky zůstávají: záměrný agregační RPC žebříčku (`SECURITY DEFINER`, pouze uživatelé s opt-in) a vypnutá kontrola uniklých hesel u aplikace používající Google přihlášení. [Kontrola funkcí](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable), [kontrola hesel](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).

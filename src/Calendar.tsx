@@ -7,7 +7,7 @@ export default function Calendar({club,userId,onLogin,onInvite,onToast,onChanged
  const [month,setMonth]=useState(()=>new Date(new Date().getFullYear(),new Date().getMonth(),1)),[day,setDay]=useState(''),[busy,setBusy]=useState('');
  useEffect(()=>{const m=club.meetups.find((m:any)=>m.id===focusMeetup);if(m){const d=new Date(m.starts_at);setMonth(new Date(d.getFullYear(),d.getMonth(),1));setDay(dateKey(d))}},[focusMeetup,club.meetups]);
  const acceptedFriends=new Set(club.friends.filter((f:any)=>f.status==='accepted').map((f:any)=>f.requester===userId?f.recipient:f.requester));
- const personal=club.meetups.filter((m:any)=>m.host_id===userId||m.invited_id===userId||club.rsvps.some((r:any)=>r.meetup_id===m.id&&r.user_id===userId)||(m.visibility==='friends'&&acceptedFriends.has(m.host_id)));
+ const personal=club.meetups.filter((m:any)=>m.host_id===userId||(m.invited_ids||[m.invited_id]).includes(userId)||club.rsvps.some((r:any)=>r.meetup_id===m.id&&r.user_id===userId)||(m.visibility==='friends'&&acceptedFriends.has(m.host_id)));
  const events=personal.filter((m:any)=>{const d=new Date(m.starts_at);return d.getFullYear()===month.getFullYear()&&d.getMonth()===month.getMonth()&&(!day||dateKey(d)===day)}).sort((a:any,b:any)=>a.starts_at.localeCompare(b.starts_at));
  const offset=(month.getDay()+6)%7,days=new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
  async function act(id:string,fn:()=>Promise<any>){setBusy(id);try{await fn();await club.reload();await onChanged()}catch(e){onToast(errorMessage(e))}finally{setBusy('')}}

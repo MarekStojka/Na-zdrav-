@@ -11,7 +11,7 @@ export function useClub(userId:string|null){
    userId?must(c.from('beer_presence').select('*').gt('expires_at',new Date().toISOString()).limit(1000)):[],
    must(c.from('beer_meetups').select('*').gte('starts_at',new Date(Date.now()-366*86400000).toISOString()).order('starts_at',{ascending:false}).limit(1000))]);
   const rsvps=userId&&meetups.length?await must(c.from('beer_rsvps').select('*').in('meetup_id',meetups.map((m:any)=>m.id)).limit(1000)):[];
-  const ids=[...new Set([userId,...friends.flatMap((f:any)=>[f.requester,f.recipient]),...follows.flatMap((f:any)=>[f.user_id,f.target_id]),...presence.map((p:any)=>p.user_id),...meetups.map((m:any)=>m.host_id),...rsvps.map((r:any)=>r.user_id)].filter(Boolean))];
+  const ids=[...new Set([userId,...friends.flatMap((f:any)=>[f.requester,f.recipient]),...follows.flatMap((f:any)=>[f.user_id,f.target_id]),...presence.map((p:any)=>p.user_id),...meetups.flatMap((m:any)=>[m.host_id,...(m.invited_ids||[m.invited_id])]),...rsvps.map((r:any)=>r.user_id)].filter(Boolean))];
   const profiles=ids.length?await must(c.from('beer_profiles').select('user_id,nickname,friend_code,selected_tag').in('user_id',ids)):[];
   if(n===generation.current){setData({friends,follows,presence,meetups,rsvps,people:Object.fromEntries(profiles.map((p:any)=>[p.user_id,p]))});setError('');}
  }catch(e){if(n===generation.current)setError(errorMessage(e))}finally{if(n===generation.current)setLoading(false)}},[userId]);

@@ -81,3 +81,9 @@ Používejte Node.js 24. Verze přímých knihoven jsou připnuté a lockfile je
 - Budoucí akce, kupony a speciální nabídky: tabulky `beer_venue_offers` a `beer_venue_managers`. Provozovatel musí nejprve přidělit ověřeného správce ke konkrétnímu podniku; klient si tuto roli nemůže sám přidělit. Správce smí měnit jen vlastní nabídky svého podniku. Veřejnost vidí pouze zveřejněné právě platné nabídky. Zatím nebyl přidán žádný správce ani nabídka. Rozhraní pro podnikatele a sledování uplatnění kuponů jsou budoucí etapa; současné rozhraní zobrazuje prázdný přehled v detailu místa.
 
 Migrace `20261030224152_venues_and_conversations.sql` je již aplikovaná na produkci. Mění pouze strukturu a odvozená pole stávajících zápisů; nevkládá zkušební příspěvky ani nabídky. `npm test` navíc ověřuje tři úrovně publika, odebrání přátelství, soukromí oznámení, odpovědi, pět různých dnů pro štamgasty, hvězdičky a přání, historii podání, trvalé odpovědi na pozvánky a nemožnost neoprávněně publikovat nabídku za podnik. Prohlížečem ověřeny dva lokální účty, komentář a oznámení, hodnocení, uložení podniku, vytvoření setkání a změna odpovědi v kalendáři. Zkušební data nikdy nešla na produkci.
+
+## Více přátel na jedné události (31. 10. 2026)
+
+Při zakládání události zvol „Soukromě vybraným přátelům“ a zaškrtni jednoho nebo více přijatých přátel, případně „Vybrat všechny přátele“. Každý dostane vlastní oznámení, událost v kalendáři a může nezávisle přijmout nebo odmítnout účast. Událost se ukládá jednou. Prázdný výběr nelze odeslat.
+
+Migrace `20261030231918_multiple_meetup_invitees.sql` přidává seznam příjemců, kontroluje přijaté přátelství pro každého a zachovává kompatibilitu s původními pozvánkami. Soukromé události a jejich odpovědi zůstávají dostupné pouze pořadateli a pozvaným.
