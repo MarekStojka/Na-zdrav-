@@ -26,3 +26,12 @@ Zatím neověřeno: živý projekt Supabase, doručování ověřovacích e-mail
 - Share-card PNG generated and visually checked from explicitly fictional local-only inputs, without writing test posts to production.
 - Authenticated community behavior is covered by PostgreSQL tests; no real-user session was used to create public test posts in the browser.
 - Build and TypeScript checks passed.
+
+## Popijeme a katalog od uživatelů — 2026-10-30
+
+- Na produkci ověřen titulek i manifest „Popijeme — sociální síť na pivo“. Nasazený JavaScript obsahuje nové texty Popijeme a nabídku piv od uživatelů, bez textů Pivogram a výchozího katalogu.
+- GitHub main: bed749c6a6c021107d78c28f8c0fe9f3398163f0 (manifest), navazuje na 96e0bfb2ba8722a2672bcc6e234fe20d005eb078 (rozhraní a BeerPicker) a 8553e3c118478a2ac3f8cbab60b79167b8b121f5 (metadata).
+- Supabase migrace 20261030213545 user_catalog_only aplikována. Odstraněno 187 předvyplněných produktů bez uživatelských vazeb; obnovitelná kopie v private.removed_seed_catalog bez klientských oprávnění.
+- Po migraci ověřeno: 1 produkt Bernard Nefiltrovaná 12, 1 zachovaný uživatelský zápis. Nová piva dál přidává stávající trigger.
+- Lokální build/testy nespuštěny (Node.js není dostupný). Automatické nasazení dodalo funkční nové HTML, JavaScript a manifest.
+- SQL soubor odpovídá migraci 20261030213545 z historie Supabase. Při nasazování již existující databáze migraci znovu nespouštět.
