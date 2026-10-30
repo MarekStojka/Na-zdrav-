@@ -1,0 +1,12 @@
+import {useEffect,useState} from 'react';
+import {requireClient} from './supabase';
+export async function preparePhoto(file:File):Promise<Blob>{
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Vyber fotku JPG, PNG nebo WebP.');
+ if(file.size>20*1024*1024)throw new Error('Fotka může mít nejvýše 20 MB.');
+ let bitmap:ImageBitmap;try{bitmap=await createImageBitmap(file)}catch{throw new Error('Fotku se nepodařilo přečíst. Vyber JPG, PNG nebo WebP.');}
+ try{if(bitmap.width*bitmap.height>80_000_000)throw new Error('Fotka je příliš velká. Zmenši ji prosím.');const scale=Math.min(1,1600/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement('canvas');canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Fotku se nepodařilo připravit.');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);const blob=await new Promise<Blob>((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('Fotku se nepodařilo připravit.')),'image/jpeg',.84));if(blob.size>6*1024*1024)throw new Error('Zmenšená fotka je příliš velká.');return blob;}finally{bitmap.close();}
+}
+export async function uploadPhoto(userId:string,entryId:string,blob:Blob){const path=userId+'/'+entryId+'.jpg';const {error}=await requireClient().storage.from('beer-photos').upload(path,blob,{contentType:'image/jpeg',upsert:false,cacheControl:'60'});if(error)throw error;return path;}
+export async function removePhoto(path:string){const {error}=await requireClient().storage.from('beer-photos').remove([path]);if(error)throw error;}
+export function usePhoto(path?:string|null){const [url,setUrl]=useState(''),[failed,setFailed]=useState(false);useEffect(()=>{let live=true;setUrl('');setFailed(false);if(!path)return;async function refresh(){const {data,error}=await requireClient().storage.from('beer-photos').createSignedUrl(path!,120);if(live){setUrl(error?'':data.signedUrl);setFailed(!!error)}}void refresh();const timer=setInterval(()=>void refresh(),90000);return()=>{live=false;clearInterval(timer)}},[path]);return {url,failed};}
+export function EntryPhoto({path,beer}:{path?:string,beer:string}){const {url,failed}=usePhoto(path);return path?(url?<img className="entry-photo" src={url} alt={'Ochutnávka: '+beer} loading="lazy" onError={e=>{e.currentTarget.style.display='none'}}/>:<p className="muted">{failed?'Fotka už není dostupná.':'Vyvolávám fotku…'}</p>):null;}

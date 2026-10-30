@@ -10,6 +10,7 @@ export default function AuthDialog({onClose}:{onClose:()=>void,recovery?:boolean
     setBusy(true);
     setError('');
     try {
+      const query=new URLSearchParams(window.location.search);const remembered={friend:query.get('friend'),post:query.get('post')};if(remembered.friend||remembered.post)sessionStorage.setItem('popijeme-return-intent',JSON.stringify(remembered));
       const {error}=await requireClient().auth.signInWithOAuth({
         provider:'google',
         options:{redirectTo:window.location.origin+'/'},

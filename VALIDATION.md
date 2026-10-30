@@ -35,3 +35,15 @@ Zatím neověřeno: živý projekt Supabase, doručování ověřovacích e-mail
 - Po migraci ověřeno: 1 produkt Bernard Nefiltrovaná 12, 1 zachovaný uživatelský zápis. Nová piva dál přidává stávající trigger.
 - Lokální build/testy nespuštěny (Node.js není dostupný). Automatické nasazení dodalo funkční nové HTML, JavaScript a manifest.
 - SQL soubor odpovídá migraci 20261030213545 z historie Supabase. Při nasazování již existující databáze migraci znovu nespouštět.
+
+
+## Klub Popijeme 0.4 — 2026-10-30
+
+- TypeScript a produkční Vite sestavení prošly. Vite aktualizován na 8.3.5; kontrola závislostí po aktualizaci nehlásila zranitelnosti.
+- Databázové testy PGlite: původní izolace deníku a komunity i nové testy tří identit a anonymní role prošly. Pokryté jsou čekající/přijatá přátelství, odebrání i vypršení pobytu, soukromé město, cizí pozvánky, neoprávněné a duplicitní potvrzení účasti, soukromé fotky a jejich vlastnictví, nepodložený štítek, trvalé odznaky, opakované vyhodnocení a nezávislost odměn na množství.
+- Funkční průchod přes skutečný supabase-js klient do místního PGlite/PostgREST adaptéru: přihlášení dvou smyšlených účtů, nahrání PNG a převod do JPEG, fotopříspěvek, pěnové oznámení a odemčení Objevitele, nastavení štítku a soukromého města, záložka z cizího příspěvku do vlastní sekce přání, hledání přezdívky, sledování, odeslání a přijetí žádosti, sdílení pobytu, zobrazení přítele v podniku, soukromá pozvánka a potvrzení adresátem.
+- Mobilní kontrola při šířce 390 CSS px: bez horizontálního přetékání obsahu. Navigace obsahuje pět voleb včetně Více; žebříček má vlastní sekci a v pasu není. Cedule, filtry a pěnové oznámení byly vizuálně ověřené.
+- Produkční databáze: migrace social_club a badge_copy aplikované, 167 definic, bucket pro fotky soukromý. Původní jeden záznam a jediné skutečné pivo zůstaly zachované; žádné testovací příspěvky se do produkce nevkládaly.
+- Bezpečnostní kontrola po hlavní migraci nepřidala nálezy; zůstávají dříve popsaná upozornění na záměrný opt-in žebříček a ochranu uniklých hesel (aplikace používá Google).
+- Ověřena shoda všech 167 metrik, cílů a českých popisů mezi zdroji a produkční databází pomocí kontrolního součtu.
+- Sdílecí odkaz na přítele ověřen i při přihlášení: po místním OAuth návratu se obnoví hledaný kód a odpovídající profil, bez automatického odesílání žádosti.
