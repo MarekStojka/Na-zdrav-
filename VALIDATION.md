@@ -63,3 +63,9 @@ Migrace `20261031152214_fix_rsvp_upsert_permissions.sql` povoluje přiřazení t
 ## Odpočet potvrzených událostí — 31. 10. 2026
 
 TypeScript a produkční sestavení prošly. Místní prohlížeč ověřil zobrazení po potvrzení účasti skutečným API upsertem ve fixture, změnu vteřin (58 → 52), čitelnost na šířce 390 px a odpočet v kalendáři. Odečítá se od absolutního termínu pomocí Date.now(), nikoli počítáním tiků. Interval se uklízí při skrytí komponenty a zastaví po dosažení termínu; při návratu do karty se čas přepočítá. Čtečky obrazovky nedostávají oznámení každou vteřinu. Testovací událost i potvrzení jsou pouze v místní fixture.
+
+## Nová nástěnka a profily — 31. 10. 2026
+
+Postup ověření: přes místní rozhraní vytvořen Post na lok bez pivních údajů, doplněno nepovinné město, uložen komentář a ověřen serverový filtr města. Přehled lidí otevřel cizí profil, který zobrazil jen veřejný základ a vysvětlení přátelství. Vlastní profil umožnil uložit medailonek a město a ihned je zobrazil. Kontrolováno rozložení se dvěma bočními panely a mobilní šířka 390 px, spodní menu, profil i nabídka Více. Všechny tyto zápisy byly výhradně v místní fixture.
+
+Rozšířené databázové testy ověřují veřejný adresář přezdívek, medailonek/město pouze pro přátele, veřejné/pro přátele/soukromé rychlé příspěvky v jednotné nástěnce, zákaz podvržení autora, komentáře a odpovědi, reakce, oznámení a skrytí po odebrání přátelství. Založení rychlého příspěvku nemění pivní statistiky. Kontrolována i ochrana odpovědí napříč příspěvky.

@@ -91,3 +91,13 @@ Migrace `20261030231918_multiple_meetup_invitees.sql` přidává seznam příjem
 ## Odpočet potvrzených událostí
 
 U události s potvrzenou účastí se na nástěnce i v kalendáři ukazuje živý odpočet dnů, hodin, minut a vteřin. Aktualizuje se každou vteřinu podle skutečného termínu události. Po začátku se změní na zprávu „Událost už začala. Stůl čeká!“. Při odhlášení účasti odpočet zmizí. Čas vychází z uloženého časového okamžiku, takže zůstává stejný nezávisle na časovém pásmu zobrazení.
+
+## Přehlednější nástěnka, profily a Post na lok (31. 10. 2026)
+
+Domovská stránka má jednu hlavní nástěnku. Na desktopu je vlevo navigace, vpravo blížící se potvrzené/pořádané události a sdílené pobyty přátel. Na mobilu zůstává spodní navigace s nabídkou Více. Pozvánky mají vlastní sekci Události.
+
+Post na lok je textový příspěvek bez povinného piva, podniku či lokality. Město je nepovinné, autor volí veřejné / pro přátele / jen pro sebe. Rychlé příspěvky mají reakce, komentáře, odpovědi, sdílení a smazání autorem; reakce a odpovědi se objeví v oznámeních. Nijak nevstupují do pivního katalogu ani pivních statistik. Společná nástěnka míchá texty a ochutnávky podle data, se stránkováním a filtrem Všechno / Moji parťáci / město uvedené v příspěvku.
+
+Přehled Lidé u stolu obsahuje všechny zaregistrované přezdívky, vyhledávání a stránky. Profil je dostupný odkazem `/?profile=<uuid>` i kliknutím na autora. Základ profilu a veřejné příspěvky uvidí každý; přijatí přátelé navíc vidí příspěvky pro přátele, nepovinný medailonek a město profilu. Pobyt se ukazuje pouze tehdy, když jej uživatel výslovně sdílí, a po expiraci zmizí. E-mail ani skutečné jméno se do profilů nepřenášejí. Medailonek a město se upravují v nastavení profilu.
+
+Migrace `20261031154817_social_wall_and_profiles.sql` je nutná před nasazením rozhraní. Nové tabulky mají RLS a explicitní granty, sdílená nástěnka i komentářové pohledy jsou security_invoker. Odebrání přátelství skryje informace profilu i příspěvky a reakce pro přátele přímo na databázové vrstvě.
