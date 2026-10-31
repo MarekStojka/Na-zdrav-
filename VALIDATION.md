@@ -69,3 +69,11 @@ TypeScript a produkční sestavení prošly. Místní prohlížeč ověřil zobr
 Postup ověření: přes místní rozhraní vytvořen Post na lok bez pivních údajů, doplněno nepovinné město, uložen komentář a ověřen serverový filtr města. Přehled lidí otevřel cizí profil, který zobrazil jen veřejný základ a vysvětlení přátelství. Vlastní profil umožnil uložit medailonek a město a ihned je zobrazil. Kontrolováno rozložení se dvěma bočními panely a mobilní šířka 390 px, spodní menu, profil i nabídka Více. Všechny tyto zápisy byly výhradně v místní fixture.
 
 Rozšířené databázové testy ověřují veřejný adresář přezdívek, medailonek/město pouze pro přátele, veřejné/pro přátele/soukromé rychlé příspěvky v jednotné nástěnce, zákaz podvržení autora, komentáře a odpovědi, reakce, oznámení a skrytí po odebrání přátelství. Založení rychlého příspěvku nemění pivní statistiky. Kontrolována i ochrana odpovědí napříč příspěvky.
+
+## Žebříček a zavináč — 31. 10. 2026
+
+Regresní test žebříčku používá 53 účastníků: uživatel s jednou značkou a 12 pivy se nevejde do prvních 50 podle značek, ale správně vede režim počtu piv. Kontrolováno sčítání opakované značky, odebrání souhlasu, souhrnný výstup bez identifikátorů a zákaz anonymního přístupu. V prohlížeči se pořadí přepnulo mezi testovacím Márou (4 značky, 4 piva) a Karlem (1 značka, 6 piv).
+
+Testy označení ověřují mezery a vykřičník, velikost písmen, potlačení prefixových falešných shod, opakovaná a vlastní označení, komentáře a skrytí oznámení mimo povolené publikum. Místní prohlížeč ověřil nabídku po @, výběr člověka, uložený odkaz na správné UUID, reset formuláře a oznámení na druhém testovacím účtu. Tabulkové RPC v místní fixture byly zpřesněné na SELECT * FROM funkce, aby vracely stejný JSON jako PostgREST.
+
+Nový agregovaný RPC má záměrně stejný model SECURITY DEFINER jako původní žebříček: vrací jen součty dobrovolných účastníků, vyžaduje auth.uid(), má prázdný search_path a anon nemá EXECUTE. Advisor na tento záměrný veřejný agregační endpoint upozorňuje; citlivé řádky se přes něj nevracejí. [Popis kontroly funkcí](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable).

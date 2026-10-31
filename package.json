@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node tests/rls.mjs && node tests/community.mjs && node tests/social.mjs",
+    "test": "node tests/rls.mjs && node tests/community.mjs && node tests/social.mjs && node tests/rankings.mjs",
     "test:fixture": "node tests/fixture-server.mjs"
   },
   "dependencies": {
