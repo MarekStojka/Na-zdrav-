@@ -4,7 +4,7 @@ import fs from 'node:fs';import assert from 'node:assert/strict';
 const db=new PGlite();
 await db.exec(`create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,public to anon,authenticated;create schema storage;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid default gen_random_uuid(),bucket_id text,name text,primary key(bucket_id,name));alter table storage.objects enable row level security;grant usage on schema storage to anon,authenticated;grant select on storage.objects to anon;grant select,insert,delete on storage.objects to authenticated;`);
 const dir=new URL('../supabase/migrations/',import.meta.url);
-for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')||f.endsWith('_venues_and_conversations.sql')||f.endsWith('_multiple_meetup_invitees.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
+for(const file of ['20261030_pivni_app.sql','20261030202322_pivogram_community.sql','20261030213545_user_catalog_only.sql',...fs.readdirSync(dir).filter(f=>f.endsWith('_social_club.sql')||f.endsWith('_badge_copy.sql')||f.endsWith('_venues_and_conversations.sql')||f.endsWith('_multiple_meetup_invitees.sql')||f.endsWith('_fix_rsvp_upsert_permissions.sql')).sort()])await db.exec(fs.readFileSync(new URL(file,dir),'utf8'));
 const a='aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',b='bbbbbbbb-bbbb-4bbb-bbbb-bbbbbbbbbbbb',c='cccccccc-cccc-4ccc-accc-cccccccccccc';
 await db.query('insert into auth.users values($1),($2),($3)',[a,b,c]);
 const as=async(id)=>{await db.exec('reset role;set role '+(id?'authenticated':'anon'));await db.query("select set_config('request.jwt.claim.sub',$1,false)",[id||'']);};
@@ -89,7 +89,10 @@ await as(b);assert.equal((await rows('select * from public.beer_venue_wishlist')
 await as(null);let venue=(await rows("select * from public.beer_venue_details where name_key='public venue'"))[0];assert.equal(Number(venue.regulars),1);assert.equal(Number(venue.rating_average),4);assert.equal(Number(venue.ratings_count),2);assert.equal(Number((await rows("select * from public.beer_venue_details where name_key='one day venue'"))[0].regulars),0);
 assert.equal((await rows("select * from public.beer_venue_beers where name_key='public venue'"))[0].serving_kind,'bottle');
 // Accept/decline is durable and only the responder can change it.
-await as(b);await db.query("insert into public.beer_rsvps(meetup_id,status) values($1,'declined')",[event.id]);await db.query("update public.beer_rsvps set status='accepted' where meetup_id=$1 and user_id=$2",[event.id,b]);
+const upsertRsvp=(eventId,userId,status)=>db.query('insert into public.beer_rsvps(meetup_id,user_id,status) values($1,$2,$3) on conflict(meetup_id,user_id) do update set meetup_id=excluded.meetup_id,user_id=excluded.user_id,status=excluded.status returning *',[eventId,userId,status]);
+await as(b);await upsertRsvp(event.id,b,'declined');await upsertRsvp(event.id,b,'accepted');await upsertRsvp(event.id,b,'accepted');
+await assert.rejects(()=>db.query('update public.beer_rsvps set meetup_id=$1 where meetup_id=$2 and user_id=$3',[privateEvent.id,event.id,b]));
+await assert.rejects(()=>db.query('update public.beer_rsvps set user_id=$1 where meetup_id=$2 and user_id=$3',[a,event.id,b]));
 await as(c);await db.query("update public.beer_rsvps set status='declined' where meetup_id=$1 and user_id=$2",[event.id,b]);
 await as(b);assert.equal((await rows('select status from public.beer_rsvps where meetup_id=$1 and user_id=$2',[event.id,b]))[0].status,'accepted');
 // Future offer management cannot be claimed by an ordinary account.

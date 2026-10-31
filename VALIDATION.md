@@ -53,3 +53,9 @@ Zatím neověřeno: živý projekt Supabase, doručování ověřovacích e-mail
 `npm test` a `npm run build` prošly. Databázový test ověřuje dva příjemce jedné události, deduplikaci, samostatná oznámení, nezávislé přijetí/odmítnutí, zákaz odpovědi za jiného, skrytí před cizím účtem a anonymním návštěvníkem, odmítnutí prázdného seznamu / sebe / nepřátel / null a kompatibilitu starého klienta. Zrušení události odstraní související odpovědi i oznámení. Místní prohlížeč ověřil povinný výběr, jednotlivá zaškrtávátka, vybrat vše/zrušit výběr a uložení jedné skupinové události přes API. Testovací data vznikala pouze v místní fixture.
 
 Kontrola Supabase: žádné nové upozornění k této migraci. Existující výjimky zůstávají: záměrný agregační RPC žebříčku (`SECURITY DEFINER`, pouze uživatelé s opt-in) a vypnutá kontrola uniklých hesel u aplikace používající Google přihlášení. [Kontrola funkcí](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable), [kontrola hesel](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).
+
+## Oprava potvrzení účasti — 31. 10. 2026
+
+Produkční log potvrdil `permission denied for table beer_rsvps`. PostgREST upsert přiděluje i stejné hodnoty konfliktních klíčů (`meetup_id`, `user_id`), zatímco původní oprávnění dovolovalo aktualizovat pouze `status`. Původní místní fixture klíče při upsertu vynechávala, takže chybu nezachytila.
+
+Migrace `20261031152214_fix_rsvp_upsert_permissions.sql` povoluje přiřazení těchto klíčů a trigger současně zakazuje změnit jejich hodnoty. RLS zůstává aktivní. Regresní test nyní provádí přesný upsert včetně klíčů: před opravou selhal shodnou chybou, po opravě prošel při prvním uložení, změně a opakování odpovědi. Pokusy přesunout odpověď na jinou událost nebo osobu jsou odmítnuté. Celé `npm test` prošlo. Migrace je aplikovaná v produkci; není potřeba nové sestavení rozhraní.
