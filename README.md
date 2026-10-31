@@ -87,3 +87,7 @@ Migrace `20261030224152_venues_and_conversations.sql` je již aplikovaná na pro
 Při zakládání události zvol „Soukromě vybraným přátelům“ a zaškrtni jednoho nebo více přijatých přátel, případně „Vybrat všechny přátele“. Každý dostane vlastní oznámení, událost v kalendáři a může nezávisle přijmout nebo odmítnout účast. Událost se ukládá jednou. Prázdný výběr nelze odeslat.
 
 Migrace `20261030231918_multiple_meetup_invitees.sql` přidává seznam příjemců, kontroluje přijaté přátelství pro každého a zachovává kompatibilitu s původními pozvánkami. Soukromé události a jejich odpovědi zůstávají dostupné pouze pořadateli a pozvaným.
+
+## Odpočet potvrzených událostí
+
+U události s potvrzenou účastí se na nástěnce i v kalendáři ukazuje živý odpočet dnů, hodin, minut a vteřin. Aktualizuje se každou vteřinu podle skutečného termínu události. Po začátku se změní na zprávu „Událost už začala. Stůl čeká!“. Při odhlášení účasti odpočet zmizí. Čas vychází z uloženého časového okamžiku, takže zůstává stejný nezávisle na časovém pásmu zobrazení.

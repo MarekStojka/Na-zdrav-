@@ -15,6 +15,9 @@ await db.query("insert into public.beer_friendships(requester,recipient,status) 
 await db.query("insert into public.beer_entries(user_id,beer,brewery,style,volume,count,date,rating,note,is_public,place_name,place_city) values($1,'Zkušební ležák','Lokální pivovar','Ležák',0.5,1,current_date,4,'Smyšlená lokální ochutnávka pro kontrolu rozhraní.',true,'U testovacího stolu','Náchod')",[B]);
 // Four varied private beers make the next real UI post unlock the explorer title.
 for(let i=1;i<=4;i++)await db.query("insert into public.beer_entries(user_id,beer,brewery,style,volume,count,date,rating,is_public,place_name,place_city) values($1,$2,'Lokální pivovar','Ležák',0.5,1,current_date,4,false,'U testovacího stolu','Náchod')",[A,'Ukázkové pivo '+i]);
+// Local-only accepted invitation for checking the live countdown in both views.
+const countdownEvent=(await db.query("insert into public.beer_meetups(host_id,title,place_name,place_city,starts_at,visibility,invited_ids) values($1,'Odpočet k setkání','Testovací stůl','Náchod',now()+interval '1 day 2 hours 3 minutes 45 seconds','private',$2) returning id",[B,[A]])).rows[0];
+await db.query("insert into public.beer_rsvps(meetup_id,user_id,status) values($1,$2,'accepted')",[countdownEvent.id,A]);
 const user=id=>({id,aud:'authenticated',role:'authenticated',email:(id===B?'bravo':'alpha')+'@example.test',app_metadata:{provider:'google'},user_metadata:{},identities:[],created_at:new Date().toISOString()});
 const token=id=>[Buffer.from(JSON.stringify({alg:'HS256',typ:'JWT'})).toString('base64url'),Buffer.from(JSON.stringify({sub:id,role:'authenticated',aud:'authenticated',iat:Math.floor(Date.now()/1000),exp:Math.floor(Date.now()/1000)+86400})).toString('base64url'),'local-only-fixture-signature'].join('.');
 let chain=Promise.resolve();

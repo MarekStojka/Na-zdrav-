@@ -59,3 +59,7 @@ Kontrola Supabase: žádné nové upozornění k této migraci. Existující vý
 Produkční log potvrdil `permission denied for table beer_rsvps`. PostgREST upsert přiděluje i stejné hodnoty konfliktních klíčů (`meetup_id`, `user_id`), zatímco původní oprávnění dovolovalo aktualizovat pouze `status`. Původní místní fixture klíče při upsertu vynechávala, takže chybu nezachytila.
 
 Migrace `20261031152214_fix_rsvp_upsert_permissions.sql` povoluje přiřazení těchto klíčů a trigger současně zakazuje změnit jejich hodnoty. RLS zůstává aktivní. Regresní test nyní provádí přesný upsert včetně klíčů: před opravou selhal shodnou chybou, po opravě prošel při prvním uložení, změně a opakování odpovědi. Pokusy přesunout odpověď na jinou událost nebo osobu jsou odmítnuté. Celé `npm test` prošlo. Migrace je aplikovaná v produkci; není potřeba nové sestavení rozhraní.
+
+## Odpočet potvrzených událostí — 31. 10. 2026
+
+TypeScript a produkční sestavení prošly. Místní prohlížeč ověřil zobrazení po potvrzení účasti skutečným API upsertem ve fixture, změnu vteřin (58 → 52), čitelnost na šířce 390 px a odpočet v kalendáři. Odečítá se od absolutního termínu pomocí Date.now(), nikoli počítáním tiků. Interval se uklízí při skrytí komponenty a zastaví po dosažení termínu; při návratu do karty se čas přepočítá. Čtečky obrazovky nedostávají oznámení každou vteřinu. Testovací událost i potvrzení jsou pouze v místní fixture.
