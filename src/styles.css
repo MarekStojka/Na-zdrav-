@@ -77,3 +77,9 @@ body{background:#eae4d4}header{max-width:none;width:100%;margin:0;padding:14px m
 .board-values{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}.board-values small{font-size:11px;color:#7a806c}.board-row>span{min-width:0;overflow-wrap:anywhere}
 
 .mention-field{position:relative}.mention-field textarea{display:block;width:100%;box-sizing:border-box}.mention-options{position:absolute;left:0;right:0;top:100%;z-index:40;max-height:240px;overflow:auto;border:1.5px solid var(--ink);background:#fff8e6;box-shadow:3px 4px 0 #263e3030}.mention-options button{display:flex;align-items:center;gap:10px;width:100%;padding:10px;border:0;border-bottom:1px solid #d6cdb5;background:none;color:var(--ink);text-align:left}.mention-options button.active{background:#e4ead7}.mention-options .social-avatar{width:30px;height:30px;font-size:14px;flex-shrink:0}.mention-options small{font-size:10px;margin-left:auto}.user-mention{color:#315e5a;font-weight:700;background:#e4ead7;padding:1px 3px;text-decoration:none;border-bottom:1px solid #9dad90}
+/* Dialogs must cover the fixed header, mobile navigation and floating add button. */
+.overlay{z-index:200;overscroll-behavior:none}
+.overlay .modal{max-height:calc(100dvh - 44px);overscroll-behavior:contain;scroll-padding-block:16px}
+body:has(.overlay){overflow:hidden}
+.toast{z-index:220}
+@media(max-width:700px){.overlay{padding:calc(12px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) calc(12px + env(safe-area-inset-left,0px))}.overlay .modal{max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}}
