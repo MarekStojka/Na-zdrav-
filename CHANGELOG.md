@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.3] — 2026-11-19
+
 ### Opraveno
 - Na mobilu má avatar v hlavičce dotykovou plochu 44 px. Výběr stylu a řazení v knihovně jsou pod sebou, takže se „Nejlépe hodnocená“ už neořízne.
 
