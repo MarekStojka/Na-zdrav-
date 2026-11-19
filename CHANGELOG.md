@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.1] — 2026-11-19
+
 ### Změněno
 - Fotky u příspěvků mají jednotný formát na výšku 4:5 jako na Instagramu. Na mobilu vyplní celou šířku karty, na desktopu mají nejvýš 540 px. Ořez je jen při zobrazení (na střed), uložený originál zůstává celý. Stejný formát má zápisník i náhled při nahrávání.
 
