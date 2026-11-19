@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.9.1] — 2026-11-19
+
 ### Změněno
 - Post na lok (textový příspěvek bez piva) už nejde napsat. Všechno se píše jako ochutnávka, která jde uložit s fotkou i bez ní. Pole „Co dnes piješ? Zapiš ochutnávku…“ na nástěnce otevře zápis piva, v „+“ zůstala Ochutnávka a Pozvánka. Starší Posty na lok zůstávají na nástěnce i s komentáři.
 
