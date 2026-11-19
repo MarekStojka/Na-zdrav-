@@ -6,6 +6,12 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Přidáno
+- **Objevuj**, obdoba reels z Instagramu: veřejné ochutnávky s fotkou jako svislý proud přes celou výšku obrazovky. Na fotce je autor, pivo s pivovarem, podnik, hodnocení a poznámka, vpravo „Na zdraví!“, komentáře a sdílení. Klepnutím na pivo nebo podnik se proud vyfiltruje, nahoře je hledání „Pivo, pivovar nebo podnik“. Funguje i bez přihlášení. V knihovně a v místech má každé pivo a podnik odkaz „Fotky“.
+
+### Změněno
+- Spodní lišta na mobilu: místo „Lidé“ je „Objevuj“, Lidé u stolu jsou v menu Více. Na desktopu je Objevuj v levém menu pod Nástěnkou.
+
 ## [0.6.0] — 2026-11-19
 
 ### Změněno

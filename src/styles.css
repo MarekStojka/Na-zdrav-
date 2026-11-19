@@ -95,7 +95,7 @@ body:has(.overlay){overflow:hidden}
 /* City filter is a chip next to the scope chips; the search field opens only when needed. */
 .social-chips .city-chip{display:inline-flex;align-items:center;gap:5px}.social-chips .city-chip.on{background:var(--paper);border-color:var(--green);color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
 /* Phones: the + gets its own (third of six) slot in the bottom bar like on Instagram instead of floating over posts. Only when signed in (the + exists). */
-@media(max-width:700px){body:has(.quick-add-wrap) header .mobile-navigation{grid-template-columns:repeat(6,minmax(0,1fr))}body:has(.quick-add-wrap) header .mobile-navigation>.nav-proud{grid-column:1}body:has(.quick-add-wrap) header .mobile-navigation>.nav-knihovna{grid-column:2}body:has(.quick-add-wrap) header .mobile-navigation>.nav-mista{grid-column:4}body:has(.quick-add-wrap) header .mobile-navigation>.nav-lide{grid-column:5}body:has(.quick-add-wrap) header .mobile-navigation>.mobile-nav-more{grid-column:6}.quick-add-wrap{left:calc(4px + (100% - 8px)*2.5/6);right:auto;bottom:calc(9px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:31}.quick-add{width:52px;height:52px;box-shadow:2px 3px 0 #302d2350}.quick-add-menu{right:auto;left:50%;transform:translateX(-50%);bottom:70px;width:min(300px,calc(100vw - 32px))}}
+@media(max-width:700px){body:has(.quick-add-wrap) header .mobile-navigation{grid-template-columns:repeat(6,minmax(0,1fr))}body:has(.quick-add-wrap) header .mobile-navigation>.nav-proud{grid-column:1}body:has(.quick-add-wrap) header .mobile-navigation>.nav-knihovna{grid-column:2}body:has(.quick-add-wrap) header .mobile-navigation>.nav-mista{grid-column:4}body:has(.quick-add-wrap) header .mobile-navigation>.nav-objevuj{grid-column:5}body:has(.quick-add-wrap) header .mobile-navigation>.mobile-nav-more{grid-column:6}.quick-add-wrap{left:calc(4px + (100% - 8px)*2.5/6);right:auto;bottom:calc(9px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:31}.quick-add{width:52px;height:52px;box-shadow:2px 3px 0 #302d2350}.quick-add-menu{right:auto;left:50%;transform:translateX(-50%);bottom:70px;width:min(300px,calc(100vw - 32px))}}
 /* Phones: avatar button gets a 44px hit area; library style and sort selects stack so long sort names fit. */
 @media(max-width:600px){header .profile{min-width:44px;min-height:44px;justify-content:center}.library-tools select{grid-column:1/-1}}
 /* Phones: the Více menu gets a dimmed backdrop; tapping it closes the menu. */
@@ -233,3 +233,39 @@ html.keyboard-open header .mobile-navigation,html.keyboard-open .quick-add-wrap{
 .left-rail nav button.active{box-shadow:none!important;background:#efe6cf!important}
 .wall-composer h1{font:700 22px/1.2 'Bitter',Georgia,serif!important;text-transform:none!important;letter-spacing:0!important}
 .left-rail nav button{text-transform:none!important;letter-spacing:0!important;font:500 14px 'DM Sans',sans-serif!important}.left-rail nav button.active{font-weight:700!important}
+/* Objevuj (reels): bottom bar shows Objevuj instead of Lidé (Lidé moved to the Více menu). */
+@media(max-width:700px){header .mobile-navigation>.nav-lide{display:none!important}header .mobile-navigation>.nav-objevuj{display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:6px;font-size:10px;padding:9px 2px;min-width:0;border:0;border-radius:0;white-space:normal}}
+/* Objevuj: public photos as a vertical full-height stream with snap scrolling; info and actions overlay the photo like Reels. */
+html:has(.reels){scroll-snap-type:y proximity}
+.reels{max-width:470px;margin:0 auto}
+.reels-bar{position:sticky;top:0;z-index:6;display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;background:var(--paper)}
+.reels-search{flex:1 1 220px;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;color:#69715d;margin:0}
+.reels-search input{flex:1;min-width:0;border:0;background:transparent;outline:none;padding:10px 0;font-size:14px;color:var(--ink)}
+.reels-search button{border:0;background:none;color:inherit;display:grid;place-items:center;min-width:32px;min-height:32px}
+.reels-chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border:1px solid var(--green);border-radius:999px;background:var(--green);color:var(--paper);font-size:13px;font-weight:600;max-width:100%}
+.reels-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reels-track{display:grid;gap:12px;padding-bottom:16px}
+.reel{position:relative;overflow:hidden;border-radius:16px;background:#1f1d18;aspect-ratio:9/16;max-height:82vh;width:100%;scroll-snap-align:start;scroll-margin-top:64px}
+.reel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#d9d2bf;font-size:13px}
+.reel-info{position:absolute;left:0;right:0;bottom:0;padding:48px 72px 16px 16px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.72) 45%);display:grid;gap:4px;justify-items:start}
+.reel-info p{margin:0}
+.reel-author{font-size:13px;opacity:.85}
+.reel-beer,.reel-place{border:0;background:none;padding:0;color:#fff;text-align:left;display:inline-flex;align-items:baseline;gap:6px;flex-wrap:wrap;min-height:28px}
+.reel-beer b{font:700 19px/1.25 'Bitter',Georgia,serif}
+.reel-beer span{font-size:14px;opacity:.85}
+.reel-place{align-items:center;gap:4px;font-size:14px;opacity:.95}
+.reel-stars{color:#ffd166;letter-spacing:1px}.reel-stars i{font-style:normal;color:rgba(255,255,255,.35)}
+.reel-note{font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.reel-note a{color:#fff}
+.reel-actions{position:absolute;right:8px;bottom:18px;display:grid;gap:10px;justify-items:center}
+.reel-actions>*{display:grid;justify-items:center;gap:2px;min-width:48px;min-height:48px;border:0;background:none;color:#fff;text-decoration:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.reel-actions b{font-size:13px}
+.reel-actions .cheered{color:#ff6b5a}
+.reels-more,.reels-empty{text-align:center;color:#69715d;padding:24px 8px;font-size:14px}
+.reels-empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.library-actions{display:inline-flex;gap:12px;align-items:center}
+@media(max-width:700px){
+/* Phone: each reel fills the space between the header, the search bar and the bottom bar. */
+.reel{aspect-ratio:auto;max-height:none;height:calc(var(--vvh,100dvh) - 83px - 60px - 70px - env(safe-area-inset-bottom,0px));min-height:420px;border-radius:14px}
+}
