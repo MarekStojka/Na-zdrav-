@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.4] — 2026-11-19
+
 ### Změněno
 - Příspěvek s fotkou má čistý popis jako na Instagramu. Hned pod fotkou je řádek akcí, pod ním název piva s pivovarem, jeden šedý řádek (hvězdičky, točené/lahvové, množství), místo a poznámka bez uvozovek. Zmizel velký nadpis, červené „Zatím bez hodnocení“ a ilustrace etikety. Karta je na mobilu kratší o dalších 50–120 px podle obsahu. Příspěvky bez fotky zůstávají beze změny.
 
