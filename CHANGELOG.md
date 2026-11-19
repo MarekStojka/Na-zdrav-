@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Změněno
+- Lidé jsou na mobilu jednoduchý seznam (kulatý avatar a jméno, klepnutím na řádek se otevře profil) místo velkých dlaždic s „Otevřít profil ↗“. Lupa ve vyhledávání je vedle pole. Karta přítele je kompaktní (118 místo 170 px): jméno a kód, malé tlačítko „Pozvat na pivo“, „Sledovat“ a nenápadné „Odebrat přítele“ vpravo nahoře.
 - Filtry (např. „Místa od komunity / Moje návštěvy / …“, filtry knihovny) jsou na mobilu v jednom řádku, který jde posunout do strany. Nelámou se do dvou řádků.
 - Statistiky nad deníkem a pasem jsou na mobilu kompaktní čísla ve třech sloupcích jako počty na profilu Instagramu (bez ikon a dlouhých popisků). Místo 267 px zabírají 111 px.
 - Stránky na mobilu začínají rovnou nadpisem. Zmizely malé nápisy nad nadpisy (např. „Malá mapa velkých chutí“), čára pod nadpisem a druhý vysvětlující odstavec, úvod je jeden krátký řádek. Nadpisy mají jednotné písmo.
