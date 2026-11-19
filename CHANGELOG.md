@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-11-19
+
 ### Změněno
 - Desktop má stejný čistý vzhled jako mobil: ploché zaoblené karty a tlačítka, kulaté avatary, nadpisy stránek bez ozdob, statistiky jako řada čísel, filtry v jednom řádku, lidé jako seznam, kompaktní podniky a stránka Parťáci. Postranní panely jsou čisté (bez retro rámečků a nakloněné „poznámky“), levé menu má normální písmo a zvýrazněnou aktivní položku.
 - Na desktopu je nástěnka sloupec široký 470 px uprostřed, jako na Instagramu. Fotka jde přes celou šířku karty a karta s fotkou má 808 px místo 911 px na výšku a 470 místo 769 px na šířku.
