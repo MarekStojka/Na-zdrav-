@@ -328,3 +328,4 @@ html:has(.explore-grid){scroll-snap-type:none}
 .lib-back{display:inline-flex;align-items:center;gap:4px;min-height:40px;margin:0 0 10px;padding:0 12px 0 6px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;color:var(--ink);font-weight:600;font-size:14px}
 .lib-subtitle{font:600 13px 'DM Sans',sans-serif;color:#69715d;text-transform:uppercase;letter-spacing:.5px;margin:4px 0 8px}
 .lib-empty{color:#69715d;font-size:14px;padding:8px 2px 18px}
+.caption-meta:empty{display:none}
