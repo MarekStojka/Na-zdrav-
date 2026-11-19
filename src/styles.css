@@ -177,3 +177,20 @@ main.app-content>section>h1{margin-bottom:6px}
 .person-actions .inline-action{font-size:13px!important;min-height:44px;color:#69715d}
 .person-actions .secondary{grid-column:1/3;justify-self:start;font-size:13px!important;padding:8px 14px!important;text-transform:none;letter-spacing:0}.person-actions>.primary+.inline-action{grid-row:1;grid-column:3;font-size:12px!important;color:#8a8f80!important}.person-actions>.inline-action:last-child{grid-row:2;grid-column:3}
 }
+/* Phones: compact venue cards — name first, city and numbers as one muted block, actions as a quiet row, no icon or dividers. */
+@media(max-width:600px){
+.venue-card{display:flex;flex-direction:column;padding:14px 16px!important}
+.venue-card>svg{display:none}
+.venue-card h3{order:-1;font:700 18px/1.3 'Bitter',Georgia,serif!important;margin:0 0 2px!important}
+.venue-card>small{font:400 13px 'DM Sans',sans-serif!important;text-transform:none!important;letter-spacing:0!important;color:#69715d!important}
+.venue-card>p{margin:2px 0 0!important;font-size:13px!important;color:#69715d}
+.venue-card>p.muted{font-size:12px!important}
+.venue-card>div{border-top:0!important;margin-top:6px!important;padding-top:0!important}
+.venue-card a{font-size:13px!important}
+.venue-extras{border-top:0!important;margin-top:0!important;padding-top:0!important}
+.venue-card>.venue-extras{display:block!important}.venue-score{margin:4px 0 0!important;color:#69715d}
+.venue-tools{gap:0 16px!important;justify-content:flex-start!important}.venue-tools button{padding:0!important;text-align:left}
+.venue-tools button,.venue-score{font-size:13px!important}
+.place-filters label{font-size:13px}
+.place-filters>p.muted{display:none}
+}
