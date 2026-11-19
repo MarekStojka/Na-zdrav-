@@ -299,3 +299,32 @@ html:has(.explore-grid){scroll-snap-type:none}
 .feed-card .feed-actions>button{white-space:nowrap}.feed-card .feed-actions .wish-action-label{display:none!important}.feed-card .feed-actions>button[title="Chci ochutnat"],.feed-card .feed-actions>button[aria-label^="Sdílet"],.feed-card .feed-actions>button[aria-label^="Smazat"]{flex:0 0 48px}
 .feed-card:not(.has-photo):not(.sip-card)>.feed-caption{margin:10px 0 4px!important}
 }
+/* Knihovna piv: breweries → beers drill-down as clean lists, one search + style filter on top. */
+.beer-library{max-width:640px;margin:0 auto}
+.lib-filter{display:flex;gap:8px;margin:0 0 14px}
+.lib-search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;color:#69715d;margin:0}
+.lib-search input{flex:1;min-width:0;border:0!important;background:transparent!important;outline:none;padding:10px 0;font-size:14px;color:var(--ink)}
+.lib-search button{border:0;background:none;color:inherit;display:grid;place-items:center;min-width:32px;min-height:32px}
+.lib-filter select{flex:0 1 auto;width:auto;max-width:40%;min-width:0;min-height:44px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;padding:0 12px;color:var(--ink);font-size:14px}
+.lib-list{list-style:none;margin:0 0 18px;padding:0;border:1px solid #e2d9c3;border-radius:14px;overflow:hidden;background:#fbf7eb}
+.lib-list>li+li{border-top:1px solid #eee6d3}
+.lib-brewery{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:10px 14px;border:0;background:none;text-align:left;color:var(--ink)}
+.lib-brewery:hover{background:#f3ecdc}
+.lib-initial{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:var(--paper);font:700 17px 'Bitter',Georgia,serif}
+.lib-brewery-text{flex:1;min-width:0;display:grid}
+.lib-brewery-text b,.lib-beer-text b{font-size:16px;font-weight:600;overflow-wrap:anywhere}
+.lib-brewery-text small,.lib-beer-text small{font-size:13px;color:#69715d}
+.lib-beer{display:flex;align-items:center;gap:8px;min-height:60px;padding:8px 8px 8px 14px}
+.lib-beer-text{flex:1;min-width:0;display:grid;gap:2px}
+.lib-beer-text small{display:flex;flex-wrap:wrap;gap:0 10px}
+.lib-score{color:var(--red)}
+.lib-tasted{display:inline-flex;align-items:center;gap:3px;color:var(--green)}
+.lib-actions{display:flex;align-items:center;flex-shrink:0}
+.lib-actions button{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:none;color:#596352}
+.lib-actions button:hover{background:#f0e7d4}
+.lib-actions button.saved{color:var(--green)}
+.lib-actions .lib-add{background:var(--green);color:var(--paper);width:36px;height:36px;margin:0 4px}
+.lib-actions .lib-add:hover{background:var(--green);opacity:.9}
+.lib-back{display:inline-flex;align-items:center;gap:4px;min-height:40px;margin:0 0 10px;padding:0 12px 0 6px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;color:var(--ink);font-weight:600;font-size:14px}
+.lib-subtitle{font:600 13px 'DM Sans',sans-serif;color:#69715d;text-transform:uppercase;letter-spacing:.5px;margin:4px 0 8px}
+.lib-empty{color:#69715d;font-size:14px;padding:8px 2px 18px}
