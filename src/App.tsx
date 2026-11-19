@@ -28,9 +28,16 @@ const [achievements,setAchievements]=useState<any>({facts:{},awards:[],new:[]}),
 const community=useCommunity(userId,club.friends.filter(f=>f.status==='accepted').map(f=>f.requester===userId?f.recipient:f.requester));const [visitPlace,setVisitPlace]=useState({name:'',city:''});
 const [profileId,setProfileId]=useState(new URLSearchParams(location.search).get('profile')||'');
 useEffect(()=>{if(!navMore)return;const close=(e:KeyboardEvent)=>{if(e.key==='Escape')setNavMore(false)};window.addEventListener('keydown',close);return()=>window.removeEventListener('keydown',close)},[navMore]);
- function navigate(next:string){setTab(next);setNavMore(false);history.replaceState(null,'',location.pathname)}
+ // Browser history: every screen (tab, profile) is a step, and an open dialog is one more step, so the browser's
+ // Back button (and Android's back gesture) moves back inside Popijeme instead of leaving it.
+ const dialogOpen=modal||settings||authOpen;const dialogStep=useRef(false);
+ useEffect(()=>{history.replaceState({...(history.state||{}),view:{tab,profileId}},'')},[]);
+ useEffect(()=>{if(dialogOpen&&!dialogStep.current){dialogStep.current=true;history.pushState({...(history.state||{}),dialog:true},'')}else if(!dialogOpen&&dialogStep.current){dialogStep.current=false;if(history.state?.dialog)history.back()}},[dialogOpen]);
+ useEffect(()=>{const onPop=(e:PopStateEvent)=>{setNavMore(false);setAddMenu(false);if(dialogStep.current&&!e.state?.dialog){dialogStep.current=false;setModal(false);setSettings(false);setAuthOpen(false);return}const view=e.state?.view;const q=new URLSearchParams(location.search);if(view){setTab(view.tab);if(view.profileId)setProfileId(view.profileId)}else setTab(q.has('profile')?'profil':q.has('friend')?'parta':'proud');if(q.get('profile'))setProfileId(q.get('profile')||'')};window.addEventListener('popstate',onPop);return()=>window.removeEventListener('popstate',onPop)},[]);
+
+ function navigate(next:string){setNavMore(false);if(next===tab&&!location.search){window.scrollTo({top:0});return}setTab(next);history.pushState({view:{tab:next}},'',location.pathname);window.scrollTo({top:0})}
  function openReels(filter:ReelsFilter){setReelsFilter(filter);navigate('objevuj')}
-function viewProfile(id:string){setProfileId(id);setTab('profil');history.replaceState(null,'','/?profile='+encodeURIComponent(id));window.scrollTo({top:0})}
+function viewProfile(id:string){setProfileId(id);setTab('profil');history.pushState({view:{tab:'profil',profileId:id}},'','/?profile='+encodeURIComponent(id));window.scrollTo({top:0})}
 function taste(p:any){if(!authenticated){setAuthOpen(true);return}setComposeMode('post');setComposerInitial(p);setModal(true)}
 function invite(p:any={}){if(!authenticated){setAuthOpen(true);return}if(!profile){setSettings(true);setToast('Nejdřív si zvol přezdívku.');return}setComposeMode('meetup');setComposerInitial(p);setModal(true)}
 async function load(){const request=++requestRef.current;try{const d=await getData();if(request!==requestRef.current||d.userId!==userRef.current)return;setEntries(d.entries);setBoard(d.board);setProfile(d.profile);setAchievements(d.achievements);if(d.achievements?.new?.length)setFoam(d.achievements.new);setStatus('')}catch(e){if(request===requestRef.current)setStatus(errorMessage(e))}}

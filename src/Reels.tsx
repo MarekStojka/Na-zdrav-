@@ -36,7 +36,17 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
   const [error, setError] = useState('');
   const generation = useRef(0);
   const sentinel = useRef<HTMLDivElement | null>(null);
-  const [openId, setOpenId] = useState<string | null>(null);
+  // An opened photo is a browser-history step: Back returns to the grid instead of leaving the app.
+  const [openId, setOpenId] = useState<string | null>(() => history.state?.reel || null);
+  useEffect(() => {
+    const onPop = (e: PopStateEvent) => setOpenId(e.state?.reel || null);
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  function closeStream() {
+    if (history.state?.reel) history.back();
+    else setOpenId(null);
+  }
   const gridScroll = useRef(0);
 
   // Search as you type, with a short pause so every keystroke does not hit the database.
@@ -77,6 +87,8 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
 
   useEffect(() => {
     setOpenId(null);
+    // A new filter shows the grid again; drop the "photo open" mark so Back does not need an extra press.
+    if (history.state?.reel) history.replaceState({...history.state, reel: null}, '');
     window.scrollTo({top: 0});
     void load(false);
   }, [filter.catalogId, filter.beer, filter.brewery, filter.place, filter.city, query]);
@@ -90,6 +102,7 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
   function open(id: string) {
     gridScroll.current = window.scrollY;
     setOpenId(id);
+    history.pushState({...(history.state || {}), reel: id}, '');
   }
 
   // Load the next page when the end of the stream comes into view.
@@ -113,7 +126,7 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
     <section className="reels" aria-label="Objevuj">
       <div className="reels-bar">
         {openId && (
-          <button type="button" className="reels-back" onClick={() => setOpenId(null)} aria-label="Zpět na mřížku fotek">
+          <button type="button" className="reels-back" onClick={closeStream} aria-label="Zpět na mřížku fotek">
             <ArrowLeft size={18} />Fotky
           </button>
         )}

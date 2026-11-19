@@ -26,7 +26,22 @@ type Props = {
 export default function BeerLibrary({state, entries, userId, onLogin, onTaste, onToast, onReels, wishlistOnly = false}: Props) {
   const [query, setQuery] = useState('');
   const [style, setStyle] = useState('');
-  const [breweryKey, setBreweryKey] = useState<string | null>(null);
+  // The open brewery is a browser-history step: Back returns to the brewery list instead of leaving the app.
+  const [breweryKey, setBreweryKey] = useState<string | null>(() => history.state?.brewery || null);
+  useEffect(() => {
+    const onPop = (e: PopStateEvent) => setBreweryKey(e.state?.brewery || null);
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  function openBrewery(key: string) {
+    setQuery('');
+    setBreweryKey(key);
+    history.pushState({...(history.state || {}), brewery: key}, '');
+  }
+  function closeBrewery() {
+    if (history.state?.brewery) history.back();
+    else setBreweryKey(null);
+  }
   const [pending, setPending] = useState('');
 
   useEffect(() => { window.scrollTo({top: 0}); }, [breweryKey]);
@@ -124,7 +139,7 @@ export default function BeerLibrary({state, entries, userId, onLogin, onTaste, o
   function BreweryRow({b}: {b: {key: string; name: string; beers: any[]; tastings: number}}) {
     return (
       <li>
-        <button type="button" className="lib-brewery" onClick={() => { setQuery(''); setBreweryKey(b.key); }}>
+        <button type="button" className="lib-brewery" onClick={() => openBrewery(b.key)}>
           <span className="lib-initial" aria-hidden="true">{b.name[0]}</span>
           <span className="lib-brewery-text">
             <b>{b.name}</b>
@@ -159,7 +174,7 @@ export default function BeerLibrary({state, entries, userId, onLogin, onTaste, o
         <div><h2>{current && !searching ? current.name : 'Knihovna piv'}</h2></div>
       </div>
       {current && !searching
-        ? <button type="button" className="lib-back" onClick={() => setBreweryKey(null)}><ChevronLeft size={18} />Všechny pivovary</button>
+        ? <button type="button" className="lib-back" onClick={closeBrewery}><ChevronLeft size={18} />Všechny pivovary</button>
         : <p className="section-intro">{breweries.length} pivovarů · {styled.length} piv. Hodnocení je z veřejných ochutnávek.</p>}
 
       <div className="lib-filter">
