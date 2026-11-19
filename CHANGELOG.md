@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.10.2] — 2026-11-19
+
 ### Změněno
 - U příspěvků a v deníku se už nevypisuje počet a objem piva („1× 0,5 l“). Formulář se na ně neptá, v rozbalovacím „Hodnocení a datum“ zůstalo jen hodnocení a datum. Nové zápisy se ukládají jako 1 pivo 0,5 l, takže se počítají jako jedna ochutnávka.
 
