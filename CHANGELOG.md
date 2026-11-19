@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Na mobilu má celá aplikace čistý plochý vzhled jako Instagram nebo Facebook. Karty a tlačítka nemají tvrdé rámečky ani posunuté stíny, mají zakulacené rohy a jemný okraj. Avatary jsou kulaté, karty událostí nemají „lepicí pásky“ a obalové panely stránek (události, pas, žebříček) zmizely. Desktop zůstává v retro stylu.
+
 ### Opraveno
 - Menu Více se po klepnutí na „Můj profil“ zavře. Dřív zůstalo otevřené přes profil.
 

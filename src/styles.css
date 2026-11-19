@@ -133,3 +133,15 @@ body:has(.overlay){overflow:hidden}
 .diary-actions button{border:0;background:none;color:#596352;min-width:40px;min-height:40px;display:grid;place-items:center}
 .diary-actions button[aria-expanded=true]{color:var(--green)}
 @media(max-width:600px){.cards{grid-template-columns:1fr;gap:12px}.beer-card{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:start}.beer-card .beer-media .entry-photo,.beer-card .beer-media .beer-art{border-bottom:0;border-right:1.5px solid var(--ink)}.beer-card .beer-media .pint{height:80px;width:72px}.beer-card .beer-content{padding:10px 12px}.diary-actions button{min-width:44px;min-height:44px}.beer-card>.beer-content .comments{grid-column:1/-1}.add-card{min-height:120px}}
+/* Phones: flat, friendly surfaces (Instagram/Facebook-like) instead of the retro print look: no offset shadows or tape, soft 1px borders,
+   rounded cards and buttons, round avatars. !important because the retro rules set borders/shadows per component with varying specificity. */
+@media(max-width:600px){
+.feed-card,.beer-card,.venue-card,.library-card,.meetup-card,.person-card,.wall-composer,.directory-person,.add-card,.wall-location-filter{box-shadow:none!important;border:1px solid #e2d9c3!important;border-radius:14px!important}
+.panel,.meetup-section{box-shadow:none!important;border:0!important;background:transparent!important;padding:0!important}
+.feed-card,.beer-card,.library-card,.meetup-card{overflow:hidden}
+.meetup-card:before,.meetup-card:after{display:none!important}
+.countdown-digits>span{box-shadow:none!important;border-radius:8px}
+main .primary,main .secondary,.wall-prompt,.social-chips button{box-shadow:none!important;border-radius:10px!important}
+.social-chips button{border-radius:999px!important}
+.social-avatar,header .profile>span,.profile-portrait{border-radius:50%!important}
+}
