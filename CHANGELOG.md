@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Formulář zápisu se už neptá „Točené / Lahvové“, je to vidět z fotky. Způsob podání se nevypisuje ani u příspěvků a v deníku. Nové zápisy se ukládají jako „neuvedeno“, starší údaje v databázi zůstávají a ukazují se už jen v historii piv u podniku.
+
 ### Přidáno
 - Označení piva nabízí předvolby piv velkých českých pivovarů, ne jen piva, která už někdo zapsal. Stačí napsat kus názvu nebo pivovaru, na pořadí slov nezáleží („cerny kozel“ najde Kozel Černý). Po uložení se předvolené pivo samo přidá do společné knihovny.
 
