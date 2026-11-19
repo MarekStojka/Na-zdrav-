@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Příspěvky bez fotky na nástěnce mají stejný čistý popis jako příspěvky s fotkou (název, šedý řádek, místo, poznámka) místo ilustrace etikety a velkého nadpisu. Na mobilu jsou zhruba o polovinu nižší. Z karet zmizely dělicí čáry pod autorem a nad akcemi. „Způsob neuveden“ se už nevypisuje.
+
 ## [0.5.4] — 2026-11-19
 
 ### Změněno

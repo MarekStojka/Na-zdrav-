@@ -116,3 +116,7 @@ body:has(.overlay){overflow:hidden}
 .caption-stars{color:var(--red);letter-spacing:1px}.caption-stars i{font-style:normal;color:#d6ccb2}
 .caption-note{font-size:14px;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;margin-top:2px!important}
 @media(min-width:851px){.feed-card.has-photo>.feed-actions,.feed-card.has-photo>.feed-caption,.feed-card.has-photo>.comments{width:100%;max-width:540px;margin-left:auto;margin-right:auto}}
+/* Clean feed cards: no dividers inside the card; posts without a photo use the same caption as photo posts. */
+.app-content .feed-card .feed-byline{border-bottom:0;padding-bottom:0}
+.feed-card .feed-actions{border-top:0;padding-top:0;margin-top:8px}
+.feed-card:not(.has-photo):not(.sip-card)>.feed-caption{margin:14px 0 4px}
