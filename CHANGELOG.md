@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.7] — 2026-11-19
+
 ### Změněno
 - Parťáci: seznam přátel je hned pod hledáním. „Právě sedím tady“ je pod ním jako jeden řádek „Ukaž přátelům, kde sedíš · Sdílet“ a formulář s podnikem a městem se otevře až po klepnutí (s tlačítkem Zrušit). Přátelé začínají na mobilu na 366 px.
 - Parťáci: místo velkého zeleného boxu „Tvůj kód ke stolu“ je jeden řádek s kódem a tlačítkem „Pozvat kamaráda“ (sdílí odkaz). Políčko s odkazem se ukáže jen tehdy, když sdílení ani kopírování nevyjde. Hledání přítele je jedno pole s nápovědou, úvod stránky je kratší.
