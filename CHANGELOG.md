@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Opraveno
+- Na mobilu má avatar v hlavičce dotykovou plochu 44 px. Výběr stylu a řazení v knihovně jsou pod sebou, takže se „Nejlépe hodnocená“ už neořízne.
+
 ### Změněno
 - Červené tlačítko + je na mobilu ve spodní liště mezi Knihovnou a Místy, jako na Instagramu. Už nevisí nad příspěvky a nezakrývá ikonu sdílení. Nabídka (Post na lok, ochutnávka, pozvánka) se otevírá nad ním. Nepřihlášení lištu mají beze změny.
 - Filtr města na nástěnce je přepínač „Město“ vedle „Všechno / Moji parťáci“. Pole pro město se otevře až po klepnutí a přepínač pak ukazuje vybrané město. Na mobilu začíná první příspěvek o dalších 68 px výš.
