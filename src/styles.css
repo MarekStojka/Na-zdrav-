@@ -111,7 +111,8 @@ body:has(.overlay){overflow:hidden}
 .caption-title b{font:700 17px 'Bitter',Georgia,serif;color:var(--ink);overflow-wrap:anywhere}
 .caption-title span{font-size:13px;color:#69715d}
 .caption-meta{display:flex;flex-wrap:wrap;align-items:center;font-size:13px;color:#69715d;line-height:1.5}
-.caption-meta>*+*::before{content:'·';margin:0 7px;color:#a59f88}
+/* Separator dots: the meta line is shifted 14px left and that strip is clipped, so a wrapped line never starts with a dot. */
+.feed-caption p.caption-meta,.beer-card .beer-content p.caption-meta{margin-left:-14px;clip-path:inset(0 0 0 14px)}.caption-meta>*{position:relative;margin-left:14px}.caption-meta>*::before{content:'·';position:absolute;left:-10px;color:#a59f88}
 .caption-place{justify-self:start;display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--green);text-decoration:none;overflow-wrap:anywhere}.caption-place:hover{text-decoration:underline}
 .caption-stars{color:var(--red);letter-spacing:1px}.caption-stars i{font-style:normal;color:#d6ccb2}
 .caption-note{font-size:14px;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;margin-top:2px!important}
