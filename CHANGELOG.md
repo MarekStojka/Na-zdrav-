@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Opraveno
+- Menu Více se po klepnutí na „Můj profil“ zavře. Dřív zůstalo otevřené přes profil.
+
 ## [0.5.5] — 2026-11-19
 
 ### Změněno
