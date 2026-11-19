@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Změněno
+- Filtr města na nástěnce je přepínač „Město“ vedle „Všechno / Moji parťáci“. Pole pro město se otevře až po klepnutí a přepínač pak ukazuje vybrané město. Na mobilu začíná první příspěvek o dalších 68 px výš.
 - Komentáře se otevírají ikonou bublinky s počtem v řádku akcí pod příspěvkem, jako na Instagramu, u piv i u Postů na lok. Samostatný řádek „Komentáře (0)“ zmizel a karta s fotkou je na mobilu o 67 px nižší. „Taky ochutnat“ je na mobilu jen ikona +, aby se akce vešly do jednoho řádku.
 
 ## [0.5.2] — 2026-11-19
