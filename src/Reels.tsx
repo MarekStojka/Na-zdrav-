@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
-import {Heart, MapPin, MessageCircle, Search, Share2, X} from 'lucide-react';
+import {ArrowLeft, Heart, MapPin, MessageCircle, Search, Share2, X} from 'lucide-react';
 import {errorMessage, requireClient} from './supabase';
 import {usePhoto} from './photos';
 import {niceDate, sharePost, toggleCheer} from './community-data';
@@ -8,7 +8,7 @@ import {MentionText} from './Mentions';
 /** Exact filter set by tapping a beer or a venue (in a reel, the library or the places screen). */
 export type ReelsFilter = {catalogId?: string; beer?: string; brewery?: string; place?: string; city?: string};
 
-const PAGE = 12;
+const PAGE = 24; // a multiple of 3, so the grid rows stay full while paging
 // PostgREST `or=(…)` and `ilike` patterns: strip characters that would break the filter syntax.
 const cleanQuery = (q: string) => q.replace(/[,()*%\\.:]/g, ' ').replace(/\s+/g, ' ').trim();
 // Case-insensitive exact match (venues are grouped by normalised name, so spelling case may differ between visits).
@@ -23,7 +23,8 @@ type Props = {
 };
 
 /**
- * "Objevuj": public photo posts as a vertical, full-height stream (like Instagram Reels).
+ * "Objevuj": public photo posts as an Instagram-like grid (three square photos per row).
+ * Tapping a photo opens a vertical stream starting at that photo; "Zpět" returns to the grid at the same scroll position.
  * Only public entries with a photo are shown (beer_feed already hides private ones; friends-only ones are filtered out here).
  */
 export default function Reels({userId, filter, onFilter, onLogin, onToast}: Props) {
@@ -35,6 +36,8 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
   const [error, setError] = useState('');
   const generation = useRef(0);
   const sentinel = useRef<HTMLDivElement | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const gridScroll = useRef(0);
 
   // Search as you type, with a short pause so every keystroke does not hit the database.
   useEffect(() => {
@@ -73,9 +76,21 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
   }
 
   useEffect(() => {
+    setOpenId(null);
     window.scrollTo({top: 0});
     void load(false);
   }, [filter.catalogId, filter.beer, filter.brewery, filter.place, filter.city, query]);
+
+  // Opening a photo jumps to it in the stream; going back restores where the grid was.
+  useEffect(() => {
+    if (openId) document.getElementById('reel-' + openId)?.scrollIntoView({block: 'start'});
+    else window.scrollTo({top: gridScroll.current});
+  }, [openId]);
+
+  function open(id: string) {
+    gridScroll.current = window.scrollY;
+    setOpenId(id);
+  }
 
   // Load the next page when the end of the stream comes into view.
   useEffect(() => {
@@ -97,6 +112,11 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
   return (
     <section className="reels" aria-label="Objevuj">
       <div className="reels-bar">
+        {openId && (
+          <button type="button" className="reels-back" onClick={() => setOpenId(null)} aria-label="Zpět na mřížku fotek">
+            <ArrowLeft size={18} />Fotky
+          </button>
+        )}
         <label className="reels-search">
           <Search size={16} aria-hidden="true" />
           <input value={text} onChange={e => setText(e.target.value)} maxLength={80} placeholder="Pivo, pivovar nebo podnik…" aria-label="Hledat pivo, pivovar nebo podnik" />
@@ -111,10 +131,10 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
         )}
       </div>
       {error && <p className="notice" role="alert">{error} <button className="inline-action" onClick={() => load(false)}>Zkusit znovu</button></p>}
-      <div className="reels-track">
-        {items.map(entry => (
-          <Reel key={entry.id} entry={entry} userId={userId} onLogin={onLogin} onToast={onToast} onFilter={onFilter} />
-        ))}
+      <div className={openId ? 'reels-track' : 'explore-grid'}>
+        {items.map(entry => openId
+          ? <Reel key={entry.id} entry={entry} userId={userId} onLogin={onLogin} onToast={onToast} onFilter={onFilter} />
+          : <Tile key={entry.id} entry={entry} onOpen={() => open(entry.id)} />)}
         {more && <div ref={sentinel} className="reels-more">Načítám další…</div>}
         {!loading && !error && !items.length && (
           <div className="reels-empty">
@@ -125,6 +145,16 @@ export default function Reels({userId, filter, onFilter, onLogin, onToast}: Prop
         {loading && !items.length && <div className="reels-more">Načítám fotky…</div>}
       </div>
     </section>
+  );
+}
+
+function Tile({entry, onOpen}: {entry: any; onOpen: () => void}) {
+  const {url, failed} = usePhoto(entry.photo_path);
+  const label = entry.beer + (entry.place_name ? ' · ' + entry.place_name : '') + ' · ' + entry.nickname;
+  return (
+    <button type="button" className="explore-tile" onClick={onOpen} aria-label={'Otevřít fotku: ' + label} title={label}>
+      {url ? <img src={url} alt="" loading="lazy" /> : <span>{failed ? '×' : ''}</span>}
+    </button>
   );
 }
 
@@ -158,7 +188,7 @@ function Reel({entry, userId, onLogin, onToast, onFilter}: {entry: any; userId: 
   }
 
   return (
-    <article className="reel">
+    <article className="reel" id={'reel-' + entry.id}>
       {url
         ? <img src={url} alt={'Ochutnávka: ' + entry.beer} loading="lazy" />
         : <div className="reel-placeholder">{failed ? 'Fotka už není dostupná.' : 'Vyvolávám fotku…'}</div>}

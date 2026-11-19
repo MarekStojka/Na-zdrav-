@@ -269,3 +269,14 @@ html:has(.reels){scroll-snap-type:y proximity}
 /* Phone: each reel fills the space between the header, the search bar and the bottom bar. */
 .reel{aspect-ratio:auto;max-height:none;height:calc(var(--vvh,100dvh) - 83px - 60px - 70px - env(safe-area-inset-bottom,0px));min-height:420px;border-radius:14px}
 }
+/* Objevuj grid: three square photos per row like an Instagram profile/explore; the stream opens on tap. */
+.explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;padding-bottom:16px}
+.explore-tile{position:relative;aspect-ratio:1;border:0;padding:0;overflow:hidden;background:#e6dcc5;display:block;cursor:pointer}
+.explore-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .15s}
+.explore-tile:hover img{opacity:.85}
+.explore-tile span{position:absolute;inset:0;display:grid;place-items:center;color:#8a8f80}
+.explore-tile:focus-visible{outline:3px solid var(--green);outline-offset:-3px}
+.reels-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:0;padding:0 12px;border:1px solid #e2d9c3;border-radius:999px;background:#fbf7eb;color:var(--ink);font-weight:600;font-size:14px}
+.reels:has(.explore-grid){max-width:620px}
+html:has(.explore-grid){scroll-snap-type:none}
+@media(max-width:700px){.reels:has(.explore-grid){margin:0 -12px}.reels:has(.explore-grid) .reels-bar{padding:8px 12px}.explore-grid{gap:2px}}

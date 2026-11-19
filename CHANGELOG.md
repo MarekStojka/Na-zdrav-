@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Objevuj je mřížka fotek po třech v řádku jako na Instagramu. Klepnutím na fotku se otevře proud od té fotky (autor, pivo, podnik, Na zdraví!, komentáře, sdílení), tlačítkem „← Fotky“ v horní liště se vrátíš do mřížky na stejné místo. Hledání a filtry podle piva a podniku zůstávají.
+
 ## [0.7.0] — 2026-11-19
 
 ### Přidáno
