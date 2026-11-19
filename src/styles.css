@@ -87,8 +87,8 @@ body:has(.overlay){overflow:hidden}
 @media(max-width:600px){input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{font-size:16px!important}}
 /* Phones: touch targets at least 44px (Apple HIG / WCAG 2.5.5). */
 @media(max-width:600px){.feed-actions button,.library-card-top button{min-height:44px;min-width:44px;justify-content:center}.social-chips button,.wall-compose-actions button,.wall-location-filter button,.venue-tools .text-btn,.library-taste .inline-action,.venue-card .inline-action,.wall-location-filter input,.directory-pagination button{min-height:44px}.feed-actions{padding-top:6px;margin-top:12px}}
-/* Phones: compact wall header so the first post shows above the fold. The prompt opens Post na lok, so the duplicate red button is hidden. */
-@media(max-width:600px){.wall-composer{padding:14px;margin-bottom:16px}.wall-composer .eyebrow,.wall-composer>div>p,.wall-compose-actions .primary{display:none}.wall-composer h1{font-size:22px;margin:0 0 8px}.wall-composer .wall-prompt{margin:0 0 10px}.wall-compose-actions{display:flex;flex-wrap:nowrap;gap:8px}.wall-compose-actions>button{flex:1;justify-content:center}.social-section>.section-heading{padding-bottom:8px;margin-bottom:4px}.social-section>.section-heading .eyebrow{display:none}.social-section>.section-heading h2{font-size:22px}.social-section .social-chips{margin:8px 0}.wall-location-filter{margin:8px 0 14px;padding:4px 9px}}
+/* Compact wall header so the first post shows above the fold. The prompt opens Post na lok, so the duplicate red button is hidden. */
+.wall-composer{padding:14px;margin-bottom:16px}.wall-composer .eyebrow,.wall-composer>div>p,.wall-compose-actions .primary{display:none}.wall-composer h1{font-size:22px;margin:0 0 8px}.wall-composer .wall-prompt{margin:0 0 10px}.wall-compose-actions{display:flex;flex-wrap:nowrap;gap:8px}.wall-compose-actions>button{flex:1;justify-content:center}.social-section>.section-heading{padding-bottom:8px;margin-bottom:4px}.social-section>.section-heading .eyebrow{display:none}.social-section>.section-heading h2{font-size:22px}.social-section .social-chips{margin:8px 0}.wall-location-filter{margin:8px 0 14px;padding:4px 9px}
 /* Comment toggle sits in the action row like on Instagram; on phones the "Taky ochutnat" label collapses to its icon so the row fits one line. */
 .comment-action b{font-family:'Barlow Condensed',sans-serif;font-size:15px}
 @media(max-width:600px){.feed-actions .action-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.feed-actions{gap:2px}}
@@ -131,9 +131,9 @@ body:has(.overlay){overflow:hidden}
 .diary-actions button{border:0;background:none;color:#596352;min-width:40px;min-height:40px;display:grid;place-items:center}
 .diary-actions button[aria-expanded=true]{color:var(--green)}
 @media(max-width:600px){.cards{grid-template-columns:1fr;gap:12px}.beer-card{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:start}.beer-card .beer-media .entry-photo,.beer-card .beer-media .beer-art{border-bottom:0;border-right:1.5px solid var(--ink)}.beer-card .beer-media .pint{height:80px;width:72px}.beer-card .beer-content{padding:10px 12px}.diary-actions button{min-width:44px;min-height:44px}.beer-card>.beer-content .comments{grid-column:1/-1}.add-card{min-height:120px}}
-/* Phones: flat, friendly surfaces (Instagram/Facebook-like) instead of the retro print look: no offset shadows or tape, soft 1px borders,
+/* Flat, friendly surfaces (Instagram/Facebook-like) instead of the retro print look: no offset shadows or tape, soft 1px borders,
    rounded cards and buttons, round avatars. !important because the retro rules set borders/shadows per component with varying specificity. */
-@media(max-width:600px){
+
 .feed-card,.beer-card,.venue-card,.library-card,.meetup-card,.person-card,.wall-composer,.directory-person,.add-card,.wall-location-filter{box-shadow:none!important;border:1px solid #e2d9c3!important;border-radius:14px!important}
 .panel,.meetup-section{box-shadow:none!important;border:0!important;background:transparent!important;padding:0!important}
 .feed-card,.beer-card,.library-card,.meetup-card{overflow:hidden}
@@ -142,22 +142,22 @@ body:has(.overlay){overflow:hidden}
 main .primary,main .secondary,.wall-prompt,.social-chips button{box-shadow:none!important;border-radius:10px!important}
 .social-chips button{border-radius:999px!important}
 .social-avatar,header .profile>span,.profile-portrait{border-radius:50%!important}
-}
-/* Phones: page headers are just a plain title (+ one short intro line). Decorative eyebrows, the rule under the title and secondary notes go. */
-@media(max-width:600px){
+
+/* Page headers are just a plain title (+ one short intro line). Decorative eyebrows, the rule under the title and secondary notes go. */
+
 main .section-heading{border-bottom:0!important;padding-bottom:0!important;margin-bottom:6px!important}
 main .section-heading .eyebrow,main.app-content>section>.eyebrow{display:none}
 main .section-heading h2,main.app-content>section>h1{font:700 24px/1.2 'Bitter',Georgia,serif;text-transform:none;letter-spacing:0;margin:0}
 main.app-content>section>h1{margin-bottom:6px}
 .section-intro{font-size:13px!important;line-height:1.5!important;margin:0 0 14px!important;color:#69715d}
 .section-intro+p.muted{display:none}
-}
-/* Phones: diary stats as a compact Instagram-profile-like counter grid (number + unit, no icons or long labels). */
-@media(max-width:600px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;margin:4px 0 18px!important;border:0!important;background:transparent!important}.stats article{display:block!important;text-align:center;padding:8px 4px!important;border:0!important;background:transparent!important}.stats .stat-icon,.stats p{display:none}.stats strong{display:flex;flex-direction:column;align-items:center;font:700 22px/1.1 'Bitter',Georgia,serif!important}.stats small{margin:2px 0 0!important;font-size:12px!important;color:#69715d}}
-/* Phones: filter chips stay on one line and scroll sideways (like Instagram/Facebook) instead of wrapping into two rows. */
-@media(max-width:600px){.social-chips{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-right:-12px!important;padding-right:12px}.social-chips::-webkit-scrollbar{display:none}.social-chips>button{flex:0 0 auto;white-space:nowrap}}
-/* Phones: people as a simple list (avatar + name, whole row tappable) and friends as compact rows with a small invite button; the destructive "Odebrat přítele" is quiet. */
-@media(max-width:600px){
+
+/* Diary stats as a compact Instagram-profile-like counter grid (number + unit, no icons or long labels). */
+.stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;margin:4px 0 18px!important;border:0!important;background:transparent!important}.stats article{display:block!important;text-align:center;padding:8px 4px!important;border:0!important;background:transparent!important}.stats .stat-icon,.stats p{display:none}.stats strong{display:flex;flex-direction:column;align-items:center;font:700 22px/1.1 'Bitter',Georgia,serif!important}.stats small{margin:2px 0 0!important;font-size:12px!important;color:#69715d}
+/* Filter chips stay on one line and scroll sideways (like Instagram/Facebook) instead of wrapping into two rows. */
+.social-chips{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-right:-12px!important;padding-right:12px}.social-chips::-webkit-scrollbar{display:none}.social-chips>button{flex:0 0 auto;white-space:nowrap}
+/* People as a simple list (avatar + name, whole row tappable) and friends as compact rows with a small invite button; the destructive "Odebrat přítele" is quiet. */
+
 .directory-search .search{flex-direction:row!important;align-items:center;gap:8px}.directory-search .search input{flex:1;min-width:0}
 .directory-grid{grid-template-columns:1fr!important;gap:0!important;border:1px solid #e2d9c3;border-radius:14px;overflow:hidden;background:#fbf7eb}
 .directory-person{flex-direction:row!important;justify-content:flex-start;gap:12px!important;padding:10px 14px!important;border:0!important;border-radius:0!important;border-bottom:1px solid #eee6d3!important;background:transparent;min-height:60px;text-align:left}
@@ -174,9 +174,9 @@ main.app-content>section>h1{margin-bottom:6px}
 .person-actions .primary{grid-column:1/3;justify-self:start;font-size:13px!important;padding:8px 14px!important;text-transform:none;letter-spacing:0}
 .person-actions .inline-action{font-size:13px!important;min-height:44px;color:#69715d}
 .person-actions .secondary{grid-column:1/3;justify-self:start;font-size:13px!important;padding:8px 14px!important;text-transform:none;letter-spacing:0}.person-actions>.primary+.inline-action{grid-row:1;grid-column:3;font-size:12px!important;color:#8a8f80!important}.person-actions>.inline-action:last-child{grid-row:2;grid-column:3}
-}
-/* Phones: compact venue cards — name first, city and numbers as one muted block, actions as a quiet row, no icon or dividers. */
-@media(max-width:600px){
+
+/* Compact venue cards — name first, city and numbers as one muted block, actions as a quiet row, no icon or dividers. */
+
 .venue-card{display:flex;flex-direction:column;padding:14px 16px!important}
 .venue-card>svg{display:none}
 .venue-card h3{order:-1;font:700 18px/1.3 'Bitter',Georgia,serif!important;margin:0 0 2px!important}
@@ -191,7 +191,7 @@ main.app-content>section>h1{margin-bottom:6px}
 .venue-tools button,.venue-score{font-size:13px!important}
 .place-filters label{font-size:13px}
 .place-filters>p.muted{display:none}
-}
+
 /* Friends page: the invite code is one compact row (code + share button); the link field appears only if sharing and copying fail. */
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .friend-code{flex-wrap:wrap;justify-content:space-between;gap:10px!important;padding:12px 14px!important}
@@ -200,14 +200,14 @@ main.app-content>section>h1{margin-bottom:6px}
 .friend-code>.primary{text-transform:none!important;letter-spacing:0!important;font:600 14px 'DM Sans',sans-serif!important;padding:10px 12px!important;white-space:nowrap}
 .people-search{align-items:stretch!important;margin:14px 0!important}
 .people-search>.primary{align-self:stretch!important}
-@media(max-width:600px){.friend-code{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px}}
+.friend-code{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px}
 /* Friends page: "Právě sedím tady" is a single row until opened; the form appears on tap with a Cancel button. */
 .presence-toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:0;background:none;padding:0;text-align:left;color:var(--ink);min-height:44px}
 .presence-toggle b{display:block;font-size:15px}
 .presence-toggle small{display:block;font-size:12px;color:#69715d;margin-top:2px}
 .presence-cta{flex-shrink:0;color:var(--green);font-weight:700;font-size:14px}
 .presence-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-@media(max-width:600px){.presence-panel{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px;padding:14px 16px!important;margin:16px 0!important}.presence-panel h3{font:700 17px 'Bitter',Georgia,serif!important;margin:0 0 8px!important}.presence-panel h3 svg{width:18px}.people-section>h3,.social-panel>h3{font:700 20px 'Bitter',Georgia,serif;margin:22px 0 10px}}
+.presence-panel{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px;padding:14px 16px!important;margin:16px 0!important}.presence-panel h3{font:700 17px 'Bitter',Georgia,serif!important;margin:0 0 8px!important}.presence-panel h3 svg{width:18px}.people-section>h3,.social-panel>h3{font:700 20px 'Bitter',Georgia,serif;margin:22px 0 10px}
 .presence-panel:has(>.presence-toggle)>h3{display:none}
 /* Phones: dialogs are full-screen sheets sized to the area above the on-screen keyboard (--vvh/--vvtop from viewport.ts),
    so the keyboard never covers fields or the save button; content scrolls inside the sheet. */
@@ -223,5 +223,13 @@ html.keyboard-open header .mobile-navigation,html.keyboard-open .quick-add-wrap{
 .auth-inapp p{font-size:13px;line-height:1.5;margin:0 0 10px}
 .auth-inapp-actions{display:flex;flex-wrap:wrap;gap:8px}
 .auth-inapp-actions>*{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
-/* Desktop: the wall is an Instagram-width column (470px) in the middle instead of stretching posts to ~770px. */
-@media(min-width:601px){.wall-composer,.social-section{max-width:470px;margin-left:auto!important;margin-right:auto!important}}
+/* Desktop: the wall is an Instagram-width column (470px) in the middle instead of stretching posts to ~770px; stats spread over one row. */
+@media(min-width:601px){.wall-composer,.social-section{max-width:470px;margin-left:auto!important;margin-right:auto!important}.stats{grid-template-columns:repeat(6,minmax(0,1fr))!important}}
+/* Desktop rails in the same flat look: soft rounded panels, plain Bitter titles, no decorative eyebrows or tilted paper note; active nav item is a rounded highlight. */
+.rail-panel,.rail-paper-note{border:1px solid #e2d9c3!important;border-radius:14px;background:#fbf7eb!important;transform:none!important;padding:16px!important}
+.rail-panel h3,.rail-paper-note h3{font:700 18px/1.3 'Bitter',Georgia,serif!important;margin:2px 0 10px!important}
+.rail-panel .eyebrow,.rail-paper-note .eyebrow{display:none}
+.left-rail nav button{border-radius:10px}
+.left-rail nav button.active{box-shadow:none!important;background:#efe6cf!important}
+.wall-composer h1{font:700 22px/1.2 'Bitter',Georgia,serif!important;text-transform:none!important;letter-spacing:0!important}
+.left-rail nav button{text-transform:none!important;letter-spacing:0!important;font:500 14px 'DM Sans',sans-serif!important}.left-rail nav button.active{font-weight:700!important}
