@@ -154,3 +154,5 @@ main.app-content>section>h1{margin-bottom:6px}
 .section-intro{font-size:13px!important;line-height:1.5!important;margin:0 0 14px!important;color:#69715d}
 .section-intro+p.muted{display:none}
 }
+/* Phones: diary stats as a compact Instagram-profile-like counter grid (number + unit, no icons or long labels). */
+@media(max-width:600px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;margin:4px 0 18px!important;border:0!important;background:transparent!important}.stats article{display:block!important;text-align:center;padding:8px 4px!important;border:0!important;background:transparent!important}.stats .stat-icon,.stats p{display:none}.stats strong{display:flex;flex-direction:column;align-items:center;font:700 22px/1.1 'Bitter',Georgia,serif!important}.stats small{margin:2px 0 0!important;font-size:12px!important;color:#69715d}}

@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Změněno
+- Statistiky nad deníkem a pasem jsou na mobilu kompaktní čísla ve třech sloupcích jako počty na profilu Instagramu (bez ikon a dlouhých popisků). Místo 267 px zabírají 111 px.
 - Stránky na mobilu začínají rovnou nadpisem. Zmizely malé nápisy nad nadpisy (např. „Malá mapa velkých chutí“), čára pod nadpisem a druhý vysvětlující odstavec, úvod je jeden krátký řádek. Nadpisy mají jednotné písmo.
 - Na mobilu má celá aplikace čistý plochý vzhled jako Instagram nebo Facebook. Karty a tlačítka nemají tvrdé rámečky ani posunuté stíny, mají zakulacené rohy a jemný okraj. Avatary jsou kulaté, karty událostí nemají „lepicí pásky“ a obalové panely stránek (události, pas, žebříček) zmizely. Desktop zůstává v retro stylu.
 
