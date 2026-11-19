@@ -145,3 +145,12 @@ main .primary,main .secondary,.wall-prompt,.social-chips button{box-shadow:none!
 .social-chips button{border-radius:999px!important}
 .social-avatar,header .profile>span,.profile-portrait{border-radius:50%!important}
 }
+/* Phones: page headers are just a plain title (+ one short intro line). Decorative eyebrows, the rule under the title and secondary notes go. */
+@media(max-width:600px){
+main .section-heading{border-bottom:0!important;padding-bottom:0!important;margin-bottom:6px!important}
+main .section-heading .eyebrow,main.app-content>section>.eyebrow{display:none}
+main .section-heading h2,main.app-content>section>h1{font:700 24px/1.2 'Bitter',Georgia,serif;text-transform:none;letter-spacing:0;margin:0}
+main.app-content>section>h1{margin-bottom:6px}
+.section-intro{font-size:13px!important;line-height:1.5!important;margin:0 0 14px!important;color:#69715d}
+.section-intro+p.muted{display:none}
+}
