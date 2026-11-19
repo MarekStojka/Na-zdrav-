@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.8] — 2026-11-19
+
 ### Opraveno
 - Přihlášení otevřené z Facebooku, Instagramu nebo Messengeru vysvětlí, že tam Google přihlášení nepovolí. Nabídne „Otevřít v prohlížeči“ (na Androidu tlačítko „Otevřít v Chrome“) a „Zkopírovat odkaz“.
 - Klávesnice na mobilu už nepřekrývá dialogy (profil a přezdívka, zápis piva, Post na lok, pozvánka). Dialog je na mobilu přes celou obrazovku a jeho výška se přizpůsobí místu nad klávesnicí. Pole, do kterého píšeš, se posune doprostřed. Spodní lišta se při psaní schová.
