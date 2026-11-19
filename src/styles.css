@@ -121,3 +121,15 @@ body:has(.overlay){overflow:hidden}
 .app-content .feed-card .feed-byline{border-bottom:0;padding-bottom:0}
 .feed-card .feed-actions{border-top:0;padding-top:0;margin-top:8px}
 .feed-card:not(.has-photo):not(.sip-card)>.feed-caption{margin:14px 0 4px}
+/* Diary cards in the same clean style: media on top (photo or a plain tinted tile), caption, one footer line with date, audience and icon actions. Phones: a list with the media on the left. */
+.beer-card .beer-media .entry-photo{margin:0;border:0;border-bottom:1.5px solid var(--ink)}
+.beer-card .beer-media .beer-art{height:auto;aspect-ratio:4/5;border-bottom:1.5px solid var(--ink)}
+.beer-card .beer-media .beer-art:after{display:none}
+.beer-card .beer-content{display:grid;gap:4px;padding:12px}
+.beer-card .beer-content p{margin:0}
+.diary-footer{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;margin-top:4px;font-size:12px;color:#69715d}
+.diary-audience{position:relative;display:inline-flex;align-items:center}.diary-audience:after{content:"▾";position:absolute;right:0;pointer-events:none;font-size:11px}.diary-visibility{appearance:none;-webkit-appearance:none;field-sizing:content;border:0;background:transparent;color:#596352;font-weight:500;padding:8px 14px 8px 0;font-size:13px;border-radius:0;min-height:40px}
+.diary-actions{display:flex;margin-left:auto}
+.diary-actions button{border:0;background:none;color:#596352;min-width:40px;min-height:40px;display:grid;place-items:center}
+.diary-actions button[aria-expanded=true]{color:var(--green)}
+@media(max-width:600px){.cards{grid-template-columns:1fr;gap:12px}.beer-card{display:grid;grid-template-columns:104px minmax(0,1fr);align-items:start}.beer-card .beer-media .entry-photo,.beer-card .beer-media .beer-art{border-bottom:0;border-right:1.5px solid var(--ink)}.beer-card .beer-media .pint{height:80px;width:72px}.beer-card .beer-content{padding:10px 12px}.diary-actions button{min-width:44px;min-height:44px}.beer-card>.beer-content .comments{grid-column:1/-1}.add-card{min-height:120px}}

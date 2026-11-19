@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Změněno
+- Deník má karty ve stejném čistém stylu: fotka (nebo jednoduchá barevná dlaždice s půllitrem), název piva s pivovarem, šedý řádek (datum, hvězdičky, styl, točené/lahvové, množství), místo a poznámka. Dole je jediný řádek s viditelností a ikonami pro komentáře, „zapsat znovu“ a smazání. Na mobilu je deník seznam s náhledem vlevo místo dvou úzkých sloupců, karta má asi 133 px.
 - Příspěvky bez fotky na nástěnce mají stejný čistý popis jako příspěvky s fotkou (název, šedý řádek, místo, poznámka) místo ilustrace etikety a velkého nadpisu. Na mobilu jsou zhruba o polovinu nižší. Z karet zmizely dělicí čáry pod autorem a nad akcemi. „Způsob neuveden“ se už nevypisuje.
 
 ## [0.5.4] — 2026-11-19
