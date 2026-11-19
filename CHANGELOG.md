@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.2] — 2026-11-19
+
 ### Změněno
 - Hlavička nástěnky je na mobilu kompaktní. První příspěvek začíná o 144 px výš (463 místo 607 px) a fotka je vidět hned bez posouvání. Pole „Co máš na jazyku?“ otevírá Post na lok, takže zdvojené červené tlačítko je na mobilu skryté. „Zapsat pivo“ a „Pozvat partu“ jsou vedle sebe.
 - Příspěvek s fotkou už vedle názvu piva nekreslí ilustraci etikety „Poctivě ochutnáno“. Fotka ji nahrazuje, karta je přehlednější a název piva má celou šířku. Příspěvky bez fotky ilustraci mají dál.
