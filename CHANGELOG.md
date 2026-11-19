@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Opraveno
+- Tlačítka na mobilu jsou aspoň 44 px, aby se trefila prstem: akce pod příspěvkem (ikony „Chci ochutnat“ a „Sdílet“ měly 17 × 29 px), filtry, akce v knihovně a místech a stránkování lidí.
 - iPhone už při klepnutí do pole (hledání, město, podnik, řazení) nepřibližuje stránku. Pole mají na mobilu písmo 16 px.
 
 ## [0.5.1] — 2026-11-19
