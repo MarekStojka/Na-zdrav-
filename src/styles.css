@@ -329,3 +329,8 @@ html:has(.explore-grid){scroll-snap-type:none}
 .lib-subtitle{font:600 13px 'DM Sans',sans-serif;color:#69715d;text-transform:uppercase;letter-spacing:.5px;margin:4px 0 8px}
 .lib-empty{color:#69715d;font-size:14px;padding:8px 2px 18px}
 .caption-meta:empty{display:none}
+/* Composer: optional one-tap star rating instead of the hidden "Hodnocení a datum" block (date is always today). */
+.rate-row{display:flex;align-items:center;gap:2px;margin:4px 0 14px}
+.rate-row>span{font-size:14px;font-weight:600;margin-right:8px}
+.rate-row>button{border:0;background:none;padding:0;width:40px;height:44px;font-size:28px;line-height:1;color:#d6ccb2;cursor:pointer}
+.rate-row>button.on{color:var(--red)}
