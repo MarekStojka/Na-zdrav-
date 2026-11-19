@@ -10,6 +10,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 - Na mobilu má avatar v hlavičce dotykovou plochu 44 px. Výběr stylu a řazení v knihovně jsou pod sebou, takže se „Nejlépe hodnocená“ už neořízne.
 
 ### Změněno
+- Menu Více na mobilu má ztmavené pozadí. Zavře se klepnutím vedle nebo klávesou Esc, ne jen tlačítkem Více.
 - Červené tlačítko + je na mobilu ve spodní liště mezi Knihovnou a Místy, jako na Instagramu. Už nevisí nad příspěvky a nezakrývá ikonu sdílení. Nabídka (Post na lok, ochutnávka, pozvánka) se otevírá nad ním. Nepřihlášení lištu mají beze změny.
 - Filtr města na nástěnce je přepínač „Město“ vedle „Všechno / Moji parťáci“. Pole pro město se otevře až po klepnutí a přepínač pak ukazuje vybrané město. Na mobilu začíná první příspěvek o dalších 68 px výš.
 - Komentáře se otevírají ikonou bublinky s počtem v řádku akcí pod příspěvkem, jako na Instagramu, u piv i u Postů na lok. Samostatný řádek „Komentáře (0)“ zmizel a karta s fotkou je na mobilu o 67 px nižší. „Taky ochutnat“ je na mobilu jen ikona +, aby se akce vešly do jednoho řádku.

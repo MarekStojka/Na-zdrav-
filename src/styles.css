@@ -101,3 +101,6 @@ body:has(.overlay){overflow:hidden}
 @media(max-width:700px){body:has(.quick-add-wrap) header .mobile-navigation{grid-template-columns:repeat(6,minmax(0,1fr))}body:has(.quick-add-wrap) header .mobile-navigation>.nav-proud{grid-column:1}body:has(.quick-add-wrap) header .mobile-navigation>.nav-knihovna{grid-column:2}body:has(.quick-add-wrap) header .mobile-navigation>.nav-mista{grid-column:4}body:has(.quick-add-wrap) header .mobile-navigation>.nav-lide{grid-column:5}body:has(.quick-add-wrap) header .mobile-navigation>.mobile-nav-more{grid-column:6}.quick-add-wrap{left:calc(4px + (100% - 8px)*2.5/6);right:auto;bottom:calc(9px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:31}.quick-add{width:52px;height:52px;box-shadow:2px 3px 0 #302d2350}.quick-add-menu{right:auto;left:50%;transform:translateX(-50%);bottom:70px;width:min(300px,calc(100vw - 32px))}}
 /* Phones: avatar button gets a 44px hit area; library style and sort selects stack so long sort names fit. */
 @media(max-width:600px){header .profile{min-width:44px;min-height:44px;justify-content:center}.library-tools select{grid-column:1/-1}}
+/* Phones: the Více menu gets a dimmed backdrop; tapping it closes the menu. */
+.nav-backdrop{display:none}
+@media(max-width:700px){.nav-backdrop{display:block;position:fixed;inset:0;background:#1f1d1859;z-index:29}}
