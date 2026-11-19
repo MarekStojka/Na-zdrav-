@@ -88,8 +88,6 @@ body:has(.overlay){overflow:hidden}
 @media(max-width:600px){input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{font-size:16px!important}}
 /* Phones: touch targets at least 44px (Apple HIG / WCAG 2.5.5). */
 @media(max-width:600px){.feed-actions button,.library-card-top button{min-height:44px;min-width:44px;justify-content:center}.social-chips button,.wall-compose-actions button,.wall-location-filter button,.venue-tools .text-btn,.library-taste .inline-action,.venue-card .inline-action,.wall-location-filter input,.directory-pagination button{min-height:44px}.feed-actions{padding-top:6px;margin-top:12px}}
-/* A post with a real photo does not need the placeholder label illustration next to the beer name. */
-.feed-card>.entry-photo+.feed-product{margin-top:4px}.feed-card>.entry-photo+.feed-product .label-art{display:none}
 /* Phones: compact wall header so the first post shows above the fold. The prompt opens Post na lok, so the duplicate red button is hidden. */
 @media(max-width:600px){.wall-composer{padding:14px;margin-bottom:16px}.wall-composer .eyebrow,.wall-composer>div>p,.wall-compose-actions .primary{display:none}.wall-composer h1{font-size:22px;margin:0 0 8px}.wall-composer .wall-prompt{margin:0 0 10px}.wall-compose-actions{display:flex;flex-wrap:nowrap;gap:8px}.wall-compose-actions>button{flex:1;justify-content:center}.social-section>.section-heading{padding-bottom:8px;margin-bottom:4px}.social-section>.section-heading .eyebrow{display:none}.social-section>.section-heading h2{font-size:22px}.social-section .social-chips{margin:8px 0}.wall-location-filter{margin:8px 0 14px;padding:4px 9px}}
 /* Comment toggle sits in the action row like on Instagram; on phones the "Taky ochutnat" label collapses to its icon so the row fits one line. */
@@ -104,3 +102,17 @@ body:has(.overlay){overflow:hidden}
 /* Phones: the Více menu gets a dimmed backdrop; tapping it closes the menu. */
 .nav-backdrop{display:none}
 @media(max-width:700px){.nav-backdrop{display:block;position:fixed;inset:0;background:#1f1d1859;z-index:29}}
+/* Photo posts: Instagram-like order (photo, actions, caption) and a quiet caption instead of the label block. */
+.feed-card.has-photo>.entry-photo{margin-bottom:6px}
+.feed-card.has-photo .feed-actions{border-top:0;margin-top:0;padding-top:0}
+.feed-caption{display:grid;gap:4px;margin:2px 0 4px}
+.feed-caption p{margin:0}
+.caption-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;line-height:1.3}
+.caption-title b{font:700 17px 'Bitter',Georgia,serif;color:var(--ink);overflow-wrap:anywhere}
+.caption-title span{font-size:13px;color:#69715d}
+.caption-meta{display:flex;flex-wrap:wrap;align-items:center;font-size:13px;color:#69715d;line-height:1.5}
+.caption-meta>*+*::before{content:'·';margin:0 7px;color:#a59f88}
+.caption-place{justify-self:start;display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--green);text-decoration:none;overflow-wrap:anywhere}.caption-place:hover{text-decoration:underline}
+.caption-stars{color:var(--red);letter-spacing:1px}.caption-stars i{font-style:normal;color:#d6ccb2}
+.caption-note{font-size:14px;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;margin-top:2px!important}
+@media(min-width:851px){.feed-card.has-photo>.feed-actions,.feed-card.has-photo>.feed-caption,.feed-card.has-photo>.comments{width:100%;max-width:540px;margin-left:auto;margin-right:auto}}
