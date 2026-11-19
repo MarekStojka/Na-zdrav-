@@ -280,3 +280,22 @@ html:has(.reels){scroll-snap-type:y proximity}
 .reels:has(.explore-grid){max-width:620px}
 html:has(.explore-grid){scroll-snap-type:none}
 @media(max-width:700px){.reels:has(.explore-grid){margin:0 -12px}.reels:has(.explore-grid) .reels-bar{padding:8px 12px}.explore-grid{gap:2px}}
+/* Desktop (701px+): Facebook-like wall instead of Instagram — a 600px column of white rounded cards with a soft shadow;
+   order author → text → photo → full-width action bar with labels. Phones keep the Instagram order. */
+@media(min-width:701px){
+.wall-composer,.social-section{max-width:600px!important}
+.app-content .feed-grid{gap:16px}
+.feed-card,.wall-composer{background:#fffdf8!important;border:0!important;border-radius:10px!important;box-shadow:0 1px 2px rgba(40,34,20,.14),0 2px 8px rgba(40,34,20,.05)!important}
+.feed-card{display:flex;flex-direction:column;padding:14px 16px 4px!important}
+.feed-card>.feed-byline{order:0}
+.feed-card>.feed-caption{order:1;margin:10px 0 12px!important}
+.feed-card>.entry-photo{order:2;width:calc(100% + 32px)!important;margin:0 -16px!important;aspect-ratio:1!important;border:0!important}
+.feed-card>.feed-actions{order:3}
+.feed-card>.comments{order:4}
+.feed-card .feed-actions{border-top:1px solid #ece4d2!important;margin:10px 0 0!important;padding:4px 0!important;gap:4px!important;justify-content:space-between}
+.feed-card.has-photo .feed-actions{border-top:0!important;margin-top:4px!important}
+.feed-card .feed-actions>button{flex:1 1 0;justify-content:center;gap:8px;min-height:40px;border-radius:6px;font-size:14px;color:#5b6253}
+.feed-card .feed-actions>button:hover{background:#f3ecdc}
+.feed-card .feed-actions>button{white-space:nowrap}.feed-card .feed-actions .wish-action-label{display:none!important}.feed-card .feed-actions>button[title="Chci ochutnat"],.feed-card .feed-actions>button[aria-label^="Sdílet"],.feed-card .feed-actions>button[aria-label^="Smazat"]{flex:0 0 48px}
+.feed-card:not(.has-photo):not(.sip-card)>.feed-caption{margin:10px 0 4px!important}
+}

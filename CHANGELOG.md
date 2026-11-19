@@ -7,6 +7,7 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 ## [Unreleased]
 
 ### Změněno
+- Desktop (od 701 px) vypadá jako Facebook: nástěnka je sloupec 600 px s bílými zaoblenými kartami a jemným stínem. Nahoře je autor, pod ním text (pivo, pivovar, místo, poznámka), pak čtvercová fotka a pod ní řádek tlačítek přes celou šířku (Na zdraví!, komentáře, Taky ochutnat, uložit, sdílet). Na mobilu zůstává pořadí jako na Instagramu.
 - Objevuj je mřížka fotek po třech v řádku jako na Instagramu. Klepnutím na fotku se otevře proud od té fotky (autor, pivo, podnik, Na zdraví!, komentáře, sdílení), tlačítkem „← Fotky“ v horní liště se vrátíš do mřížky na stejné místo. Hledání a filtry podle piva a podniku zůstávají.
 
 ## [0.7.0] — 2026-11-19
