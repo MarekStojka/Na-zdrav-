@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.10.4] — 2026-11-19
+
 ### Opraveno
 - Tlačítko Zpět v prohlížeči (a gesto zpět na Androidu) se vrací o krok v rámci Popijeme, z aplikace neodejde. Krokem je přepnutí záložky, profil, otevřený pivovar v knihovně, otevřená fotka v Objevuj i otevřený formulář nebo nastavení (Zpět ho zavře).
 
