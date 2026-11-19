@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.9.2] — 2026-11-19
+
 ### Změněno
 - Předvolby piv jsou aktualizované: 402 piv od 47 českých pivovarů a značek (dříve 188 od 18). Jen současná nabídka, bez ukončených piv. Nově např. Starobrno, Zlatopramen, Březňák, Hostan, skupina Lobkowicz (Lobkowicz, Platan, Klášter, Rohozec, Ježek, Černá Hora, Janáček), Krakonoš, Chodovar, Konrad, Žatec, Postřižinské, Regent, Hubertus, Bakalář, Novopacké, Pardál, Braník a privátní značky Bruncvík, Staročech a Trumf. Zdroje jsou v supabase/catalog-sources.md.
 
