@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- „Chci ochutnat“ je jednoduchý seznam piv ve stejném vzhledu jako knihovna: pivo, pivovar, styl, hodnocení a tlačítka Fotky, Odebrat ze seznamu a Zapsat. Zmizely karty, řazení a filtry.
+
 ## [0.10.0] — 2026-11-19
 
 ### Změněno

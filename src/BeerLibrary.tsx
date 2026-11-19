@@ -14,6 +14,8 @@ type Props = {
   onTaste: (p: any) => void;
   onToast: (message: string) => void;
   onReels?: (filter: {catalogId?: string; beer?: string; brewery?: string}) => void;
+  /** "Chci ochutnat": just the user's wishlist as a flat list, no browsing or filters. */
+  wishlistOnly?: boolean;
 };
 
 /**
@@ -21,7 +23,7 @@ type Props = {
  * Shows community beers (with ratings) merged with the preset catalogue, so every brewery is complete even before
  * anyone has logged its beers.
  */
-export default function BeerLibrary({state, entries, userId, onLogin, onTaste, onToast, onReels}: Props) {
+export default function BeerLibrary({state, entries, userId, onLogin, onTaste, onToast, onReels, wishlistOnly = false}: Props) {
   const [query, setQuery] = useState('');
   const [style, setStyle] = useState('');
   const [breweryKey, setBreweryKey] = useState<string | null>(null);
@@ -131,6 +133,23 @@ export default function BeerLibrary({state, entries, userId, onLogin, onTaste, o
           <ChevronRight size={18} aria-hidden="true" />
         </button>
       </li>
+    );
+  }
+
+  if (wishlistOnly) {
+    const wished = state.library
+      .filter((p: any) => state.wishlist.includes(p.id))
+      .sort((a: any, b: any) => a.brewery.localeCompare(b.brewery, 'cs') || a.beer.localeCompare(b.beer, 'cs'));
+    return (
+      <section className="beer-library">
+        <div className="section-heading"><div><h2>Chci ochutnat{wished.length ? ' (' + wished.length + ')' : ''}</h2></div></div>
+        <p className="section-intro">Piva na příště. Přidáš je záložkou u piva v knihovně nebo u příspěvku.</p>
+        {!userId
+          ? <p className="notice"><button className="inline-action" onClick={onLogin}>Přihlas se</button> a ukládej si piva na příště.</p>
+          : wished.length
+            ? <ul className="lib-list">{wished.map((p: any) => <BeerRow key={p.id} p={p} showBrewery />)}</ul>
+            : <p className="lib-empty">Zatím tu nic není. V knihovně nebo u příspěvku klepni na záložku a pivo se objeví tady.</p>}
+      </section>
     );
   }
 

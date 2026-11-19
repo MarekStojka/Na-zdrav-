@@ -15,7 +15,7 @@ import BeerLibrary from './BeerLibrary';
 import {useEffect,useState,useRef,useCallback} from 'react';
 import BeerPicker from './BeerPicker';
 import AuthDialog from './AuthDialog';
-import {Feed,Library,Places} from './Community';
+import {Feed,Places} from './Community';
 import Passport from './Passport';
 import {useCommunity,changeVisibility} from './community-data';
 import {supabase,getData,saveData,errorMessage} from './supabase';
@@ -53,7 +53,7 @@ return <><header><a href="/" className="logo"><span className="brandicon"><Beer 
 {tab==='profil'&&<ProfilePage key={(profileId||userId||'guest')+'|'+(profile?.nickname||'')+'|'+(profile?.bio||'')+'|'+(profile?.home_city||'')} id={profileId||userId||''} userId={userId} club={club} community={community} onEdit={()=>setSettings(true)} onLogin={()=>setAuthOpen(true)} onInvite={invite} onTaste={taste} onToast={setToast}/>}
 {tab==='objevuj'&&<Reels userId={userId} filter={reelsFilter} onFilter={setReelsFilter} onLogin={()=>setAuthOpen(true)} onToast={setToast}/>}
 {tab==='knihovna'&&<BeerLibrary onReels={openReels} state={community} entries={entries} userId={userId} onLogin={()=>setAuthOpen(true)} onTaste={taste} onToast={setToast}/>}
-{tab==='prani'&&<Library key="wishlist" wantedOnly onReels={openReels} state={community} entries={entries} userId={userId} onLogin={()=>setAuthOpen(true)} onTaste={taste} onToast={setToast}/>}
+{tab==='prani'&&<BeerLibrary key="wishlist" wishlistOnly onReels={openReels} state={community} entries={entries} userId={userId} onLogin={()=>setAuthOpen(true)} onTaste={taste} onToast={setToast}/>}
 {tab==='parta'&&<People club={club} userId={userId} profile={profile} homeCity={profile?.home_city||''} venues={community.venues} onLogin={()=>setAuthOpen(true)} onInvite={invite} onToast={setToast} onChanged={load} initialQuery={new URLSearchParams(window.location.search).get('friend')||''}/>}
 {tab==='kalendar'&&<Calendar focusMeetup={calendarFocus} club={club} userId={userId} onLogin={()=>setAuthOpen(true)} onInvite={invite} onToast={setToast} onChanged={load}/>}
 {tab==='mista'&&<Places onReels={openReels} onInvite={invite} club={club} homeCity={profile?.home_city||''} state={community} entries={entries} userId={userId} onLogin={()=>setAuthOpen(true)} onTaste={taste} onToast={setToast}/>}
