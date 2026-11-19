@@ -211,3 +211,11 @@ main.app-content>section>h1{margin-bottom:6px}
 .presence-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 @media(max-width:600px){.presence-panel{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px;padding:14px 16px!important;margin:16px 0!important}.presence-panel h3{font:700 17px 'Bitter',Georgia,serif!important;margin:0 0 8px!important}.presence-panel h3 svg{width:18px}.people-section>h3,.social-panel>h3{font:700 20px 'Bitter',Georgia,serif;margin:22px 0 10px}}
 .presence-panel:has(>.presence-toggle)>h3{display:none}
+/* Phones: dialogs are full-screen sheets sized to the area above the on-screen keyboard (--vvh/--vvtop from viewport.ts),
+   so the keyboard never covers fields or the save button; content scrolls inside the sheet. */
+@media(max-width:700px){
+.overlay{top:var(--vvtop,0px)!important;bottom:auto!important;height:var(--vvh,100dvh)!important;padding:0!important;align-items:stretch!important;justify-content:stretch!important;overflow:hidden!important}
+.overlay .modal{width:100%!important;max-width:none!important;height:100%!important;max-height:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow-y:auto!important;padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(24px + env(safe-area-inset-bottom,0px))!important;scroll-padding-block:72px}
+.overlay .modal>.close{position:sticky;top:0;float:right;z-index:2;margin:-6px -6px 0 0;width:44px;height:44px;background:var(--paper);border-radius:50%}
+html.keyboard-open header .mobile-navigation,html.keyboard-open .quick-add-wrap{display:none!important}
+}

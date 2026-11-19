@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Opraveno
+- Klávesnice na mobilu už nepřekrývá dialogy (profil a přezdívka, zápis piva, Post na lok, pozvánka). Dialog je na mobilu přes celou obrazovku a jeho výška se přizpůsobí místu nad klávesnicí. Pole, do kterého píšeš, se posune doprostřed. Spodní lišta se při psaní schová.
+
 ## [0.5.7] — 2026-11-19
 
 ### Změněno
