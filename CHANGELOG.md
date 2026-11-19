@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.5.6] — 2026-11-19
+
 ### Změněno
 - Karty podniků jsou na mobilu kompaktní: název nahoře, pod ním město a čísla šedě, akce v klidných řádcích bez ikony a dělicích čar. Nápověda „Nastav si město v profilu“ je na mobilu skrytá.
 - Lidé jsou na mobilu jednoduchý seznam (kulatý avatar a jméno, klepnutím na řádek se otevře profil) místo velkých dlaždic s „Otevřít profil ↗“. Lupa ve vyhledávání je vedle pole. Karta přítele je kompaktní (118 místo 170 px): jméno a kód, malé tlačítko „Pozvat na pivo“, „Sledovat“ a nenápadné „Odebrat přítele“ vpravo nahoře.
