@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.10.3] — 2026-11-19
+
 ### Změněno
 - Formulář zápisu nemá rozbalovací blok „Hodnocení a datum“. Datum je vždy dnešní, jako na sociálních sítích. Hodnocení je nepovinná řada pěti hvězdiček rovnou ve formuláři: klepnutím vybereš, dalším klepnutím na stejnou hvězdu zrušíš.
 
