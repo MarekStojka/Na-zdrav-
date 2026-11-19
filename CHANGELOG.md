@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Přidáno
+- Označení piva nabízí předvolby piv velkých českých pivovarů, ne jen piva, která už někdo zapsal. Stačí napsat kus názvu nebo pivovaru, na pořadí slov nezáleží („cerny kozel“ najde Kozel Černý). Po uložení se předvolené pivo samo přidá do společné knihovny.
+
 ## [0.8.0] — 2026-11-19
 
 ### Změněno

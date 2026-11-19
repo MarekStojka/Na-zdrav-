@@ -1,18 +1,25 @@
 import {MentionInput} from './Mentions';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useMemo,useRef,useState} from 'react';
 import {Plus,Camera,X,Beer,CalendarDays,MapPin,ChevronDown,Globe,Lock} from 'lucide-react';
 import {normalize,productKey} from './community-data';
+// Preset beers of the largest Czech breweries (official websites, see supabase/catalog-sources.md). Picking one
+// behaves like typing it: on save the database links or creates the catalog entry by name (private.link_beer_catalog).
+import beerPresets from './beer-catalog.json';
 import {saveData} from './supabase';
 import {preparePhoto,uploadPhoto,removePhoto} from './photos';
 import {createMeetup,setPresence} from './club-data';
 const today=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Prague'});
 export default function Composer({mode,initial,library,venues,userId,friends,canSharePresence,onClose,onSaved,onToast}:{mode:'post'|'meetup',initial:any,library:any[],venues:any[],userId:string,friends:any[],canSharePresence:boolean,onClose:()=>void,onSaved:()=>Promise<void>,onToast:(s:string)=>void}){
- const [selected,setSelected]=useState<any>(library.find(p=>productKey(p)===productKey(initial))||null),[query,setQuery]=useState(''),[isNew,setIsNew]=useState(false),[details,setDetails]=useState(false),[busy,setBusy]=useState(false),[preparing,setPreparing]=useState(false),[photo,setPhoto]=useState<Blob|null>(null),[preview,setPreview]=useState(''),[error,setError]=useState(''),[here,setHere]=useState(false),[place,setPlace]=useState(initial.place_name||''),[city,setCity]=useState(initial.place_city||''),[visibility,setVisibility]=useState(initial.invited_id?'private':'public');
+ // Community beers first (they carry ratings and history), then presets nobody has logged yet.
+ const catalog=useMemo(()=>{const known=new Set(library.map(productKey));return [...library,...(beerPresets as any[]).filter(p=>!known.has(productKey(p))).map(p=>({beer:p.beer,brewery:p.brewery,style:p.style,id:'preset:'+productKey(p),preset:true}))]},[library]);
+ const [selected,setSelected]=useState<any>(catalog.find(p=>productKey(p)===productKey(initial))||null),[query,setQuery]=useState(''),[isNew,setIsNew]=useState(false),[details,setDetails]=useState(false),[busy,setBusy]=useState(false),[preparing,setPreparing]=useState(false),[photo,setPhoto]=useState<Blob|null>(null),[preview,setPreview]=useState(''),[error,setError]=useState(''),[here,setHere]=useState(false),[place,setPlace]=useState(initial.place_name||''),[city,setCity]=useState(initial.place_city||''),[visibility,setVisibility]=useState(initial.invited_id?'private':'public');
  const [invitees,setInvitees]=useState<string[]>(initial.invited_ids|| (initial.invited_id?[initial.invited_id]:[]));
  const generation=useRef(0),formRef=useRef<HTMLFormElement>(null);
  useEffect(()=>{if(!photo){setPreview('');return}const url=URL.createObjectURL(photo);setPreview(url);return()=>URL.revokeObjectURL(url)},[photo]);
  useEffect(()=>{const f=(e:KeyboardEvent)=>{if(e.key==='Escape'&&!busy)onClose()};window.addEventListener('keydown',f);return()=>{generation.current++;window.removeEventListener('keydown',f)}},[busy,onClose]);
- const found=library.filter(p=>normalize(p.beer+' '+p.brewery).includes(normalize(query))).slice(0,20);
+ // Every typed word must appear (any order), so "cerny kozel" finds "Kozel Černý".
+ const words=normalize(query).split(' ').filter(Boolean);
+ const found=catalog.filter(p=>{const text=normalize(p.beer+' '+p.brewery+' '+p.style);return words.every(w=>text.includes(w))}).slice(0,20);
  async function submit(e:any){e.preventDefault();if(busy||preparing)return;const f=new FormData(e.currentTarget);setError('');setBusy(true);let path:string|undefined;let saved=false;try{
   if(mode==='meetup'){
    const date=new Date(String(f.get('starts_at')));if(!Number.isFinite(date.getTime())||date.getTime()<Date.now()-60000)throw new Error('Vyber budoucí termín.');
