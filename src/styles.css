@@ -88,3 +88,5 @@ body:has(.overlay){overflow:hidden}
 @media(max-width:600px){input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{font-size:16px!important}}
 /* Phones: touch targets at least 44px (Apple HIG / WCAG 2.5.5). */
 @media(max-width:600px){.feed-actions button,.library-card-top button{min-height:44px;min-width:44px;justify-content:center}.social-chips button,.wall-compose-actions button,.wall-location-filter button,.venue-tools .text-btn,.library-taste .inline-action,.venue-card .inline-action,.wall-location-filter input,.directory-pagination button{min-height:44px}.feed-actions{padding-top:6px;margin-top:12px}}
+/* A post with a real photo does not need the placeholder label illustration next to the beer name. */
+.feed-card>.entry-photo+.feed-product{margin-top:4px}.feed-card>.entry-photo+.feed-product .label-art{display:none}
