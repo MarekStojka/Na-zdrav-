@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Na desktopu je nástěnka sloupec široký 470 px uprostřed, jako na Instagramu. Fotka jde přes celou šířku karty a karta s fotkou má 808 px místo 911 px na výšku a 470 místo 769 px na šířku.
+
 ## [0.5.8] — 2026-11-19
 
 ### Opraveno

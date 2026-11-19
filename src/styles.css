@@ -83,7 +83,6 @@ body{background:#eae4d4}header{max-width:none;width:100%;margin:0;padding:14px m
 body:has(.overlay){overflow:hidden}
 .toast{z-index:220}
 @media(max-width:700px){.overlay{padding:calc(12px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) calc(12px + env(safe-area-inset-left,0px))}.overlay .modal{max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}}
-@media(min-width:851px){.feed-card>.entry-photo{width:min(calc(100% + 36px),540px);margin:16px auto;border:1px solid #ded5bd}}
 /* Phones: iOS Safari zooms into any field with font-size under 16px; !important beats the many per-component sizes. */
 @media(max-width:600px){input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{font-size:16px!important}}
 /* Phones: touch targets at least 44px (Apple HIG / WCAG 2.5.5). */
@@ -116,7 +115,6 @@ body:has(.overlay){overflow:hidden}
 .caption-place{justify-self:start;display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--green);text-decoration:none;overflow-wrap:anywhere}.caption-place:hover{text-decoration:underline}
 .caption-stars{color:var(--red);letter-spacing:1px}.caption-stars i{font-style:normal;color:#d6ccb2}
 .caption-note{font-size:14px;line-height:1.5;color:var(--ink);overflow-wrap:anywhere;margin-top:2px!important}
-@media(min-width:851px){.feed-card.has-photo>.feed-actions,.feed-card.has-photo>.feed-caption,.feed-card.has-photo>.comments{width:100%;max-width:540px;margin-left:auto;margin-right:auto}}
 /* Clean feed cards: no dividers inside the card; posts without a photo use the same caption as photo posts. */
 .app-content .feed-card .feed-byline{border-bottom:0;padding-bottom:0}
 .feed-card .feed-actions{border-top:0;padding-top:0;margin-top:8px}
@@ -225,3 +223,5 @@ html.keyboard-open header .mobile-navigation,html.keyboard-open .quick-add-wrap{
 .auth-inapp p{font-size:13px;line-height:1.5;margin:0 0 10px}
 .auth-inapp-actions{display:flex;flex-wrap:wrap;gap:8px}
 .auth-inapp-actions>*{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
+/* Desktop: the wall is an Instagram-width column (470px) in the middle instead of stretching posts to ~770px. */
+@media(min-width:601px){.wall-composer,.social-section{max-width:470px;margin-left:auto!important;margin-right:auto!important}}
