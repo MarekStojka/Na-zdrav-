@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Parťáci: místo velkého zeleného boxu „Tvůj kód ke stolu“ je jeden řádek s kódem a tlačítkem „Pozvat kamaráda“ (sdílí odkaz). Políčko s odkazem se ukáže jen tehdy, když sdílení ani kopírování nevyjde. Hledání přítele je jedno pole s nápovědou, úvod stránky je kratší.
+
 ## [0.5.6] — 2026-11-19
 
 ### Změněno

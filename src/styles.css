@@ -194,3 +194,12 @@ main.app-content>section>h1{margin-bottom:6px}
 .place-filters label{font-size:13px}
 .place-filters>p.muted{display:none}
 }
+/* Friends page: the invite code is one compact row (code + share button); the link field appears only if sharing and copying fail. */
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.friend-code{flex-wrap:wrap;justify-content:space-between;gap:10px!important;padding:12px 14px!important}
+.friend-code small{display:block;font:500 12px 'DM Sans',sans-serif!important;letter-spacing:0!important;color:#69715d}
+.friend-code strong{font:700 20px 'Bitter',Georgia,serif!important;letter-spacing:1px!important;margin:2px 0 0!important;color:var(--ink)!important}
+.friend-code>.primary{text-transform:none!important;letter-spacing:0!important;font:600 14px 'DM Sans',sans-serif!important;padding:10px 12px!important;white-space:nowrap}
+.people-search{align-items:stretch!important;margin:14px 0!important}
+.people-search>.primary{align-self:stretch!important}
+@media(max-width:600px){.friend-code{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px}}
