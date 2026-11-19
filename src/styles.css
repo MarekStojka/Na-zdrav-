@@ -203,3 +203,11 @@ main.app-content>section>h1{margin-bottom:6px}
 .people-search{align-items:stretch!important;margin:14px 0!important}
 .people-search>.primary{align-self:stretch!important}
 @media(max-width:600px){.friend-code{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px}}
+/* Friends page: "Právě sedím tady" is a single row until opened; the form appears on tap with a Cancel button. */
+.presence-toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:0;background:none;padding:0;text-align:left;color:var(--ink);min-height:44px}
+.presence-toggle b{display:block;font-size:15px}
+.presence-toggle small{display:block;font-size:12px;color:#69715d;margin-top:2px}
+.presence-cta{flex-shrink:0;color:var(--green);font-weight:700;font-size:14px}
+.presence-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+@media(max-width:600px){.presence-panel{background:#fbf7eb!important;border:1px solid #e2d9c3!important;border-radius:14px;padding:14px 16px!important;margin:16px 0!important}.presence-panel h3{font:700 17px 'Bitter',Georgia,serif!important;margin:0 0 8px!important}.presence-panel h3 svg{width:18px}.people-section>h3,.social-panel>h3{font:700 20px 'Bitter',Georgia,serif;margin:22px 0 10px}}
+.presence-panel:has(>.presence-toggle)>h3{display:none}
