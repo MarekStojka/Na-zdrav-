@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.9.0] — 2026-11-19
+
 ### Změněno
 - Formulář zápisu se už neptá „Točené / Lahvové“, je to vidět z fotky. Způsob podání se nevypisuje ani u příspěvků a v deníku. Nové zápisy se ukládají jako „neuvedeno“, starší údaje v databázi zůstávají a ukazují se už jen v historii piv u podniku.
 
