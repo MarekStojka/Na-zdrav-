@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.10.0] — 2026-11-19
+
 ### Změněno
 - Knihovna piv je jednoduchý průchod. Výchozí je seznam pivovarů s počtem piv, klepnutím na pivovar se ukážou jeho piva (hodnocení, „mám ochutnáno“, tlačítka Zapsat, Chci ochutnat a Fotky) a tlačítkem „‹ Všechny pivovary“ se vrátíš. Nahoře je jedno hledání, které najde pivovar i pivo napříč vším, a výběr stylu. Knihovna ukazuje i předvolená piva, která ještě nikdo nezapsal. Zmizely karty, řazení a filtry „Alespoň 3 hodnotitelé / Ještě jsem neměl“. Seznam „Chci ochutnat“ zůstává beze změny.
 
