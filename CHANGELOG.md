@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Přidáno
+- Počet piv je zpátky. Po označení piva ve formuláři je hned pod ním „Kolik jich bylo?“ s tlačítky − a + (1 až 100, výchozí 1). U příspěvků a v zápisníku se počet ukáže jen u víc než jednoho piva („3×“), objem se dál nevypisuje.
+
 ## [0.10.4] — 2026-11-19
 
 ### Opraveno
