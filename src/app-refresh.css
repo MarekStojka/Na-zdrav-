@@ -1,0 +1,9 @@
+/* Pull-to-refresh from the home screen and the "new version" bar (app-refresh.ts). */
+.pull-refresh{position:fixed;top:calc(-44px + env(safe-area-inset-top));left:50%;transform:translate(-50%,0);z-index:40;display:flex;align-items:center;gap:8px;padding:9px 14px;border:2px solid var(--ink);border-radius:20px;background:#fbf2de;color:var(--ink);font-size:12px;font-weight:700;box-shadow:2px 3px 0 #493f3540;opacity:0;pointer-events:none;transition:opacity .15s}
+.pull-refresh.visible{opacity:1}
+.pull-refresh-arrow{display:inline-block;transition:transform .2s;color:var(--red);font-size:15px}
+.pull-refresh.ready .pull-refresh-arrow{transform:rotate(180deg)}
+.pull-refresh.loading .pull-refresh-arrow{animation:pull-spin .8s linear infinite}
+@keyframes pull-spin{to{transform:rotate(360deg)}}
+.update-bar{position:fixed;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top));z-index:45;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 16px;background:var(--green);color:#fff9e8;border-radius:10px;box-shadow:0 5px 30px #203b3240;font-size:13px;max-width:520px;margin:0 auto}
+.update-bar button{border:0;border-radius:7px;background:#efb44d;color:var(--ink);font-weight:700;padding:9px 14px}
