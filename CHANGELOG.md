@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Spodní lišta a tlačítko + na telefonu zůstávají při scrollu vidět. Schovávání při sjíždění dolů (0.13.0) je pryč: když člověk scrolluje a chce honem něco přidat, nemusí nejdřív popojet nahoru.
+
 ## [0.13.2] — 2026-11-21
 
 ### Změněno
