@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Změněno
+- Na telefonu se spodní lišta (Nástěnka, Knihovna piv, +, Místa, Objevuj, Více) při scrollu dolů schová, aby bylo vidět víc příspěvků. Při scrollu nahoru, nahoře na stránce a na jejím konci se vrátí. Při otevřeném menu Více nebo klávesnici zůstává.
+
 ## [0.11.0] — 2026-11-21
 
 ### Přidáno

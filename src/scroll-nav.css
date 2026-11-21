@@ -1,0 +1,9 @@
+/* Phone bottom bar hides on scroll down (class set by scroll-nav.ts). */
+@media(max-width:700px){
+ header .mobile-navigation,.quick-add-wrap{transition:transform .25s ease}
+ html.nav-hidden header .mobile-navigation{transform:translateY(calc(100% + 4px))}
+ html.nav-hidden .quick-add-wrap{transform:translateX(-50%) translateY(calc(90px + env(safe-area-inset-bottom)))}
+}
+@media(max-width:700px) and (prefers-reduced-motion:reduce){
+ header .mobile-navigation,.quick-add-wrap{transition:none}
+}
