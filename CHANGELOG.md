@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.18.0] — 2026-11-21
+
+### Změněno
+- Přihlášení je jen přes Google. Z přihlašovacího okna zmizelo přihlášení e-mailem a heslem i „Zapomenuté heslo“, Popijeme tak neukládá žádná hesla. Podmínky a zásady soukromí to říkají taky.
+
 ## [0.17.0] — 2026-11-21
 
 ### Přidáno
