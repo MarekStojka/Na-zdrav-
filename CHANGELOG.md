@@ -6,6 +6,9 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Přidáno
+- Na telefonu je v menu Více položka „Přidat na plochu“. Popijeme pak máš jako ikonku na ploše a otevře se přes celou obrazovku bez lišt prohlížeče. Na Androidu nabídne prohlížeč přidání jedním klepnutím, na iPhonu se ukáže krátký návod (Sdílet → Přidat na plochu). Kdo už Popijeme otevřel z plochy, položku nevidí. Na plochu se teď dává i správná ikonka s půllitrem.
+
 ## [0.12.0] — 2026-11-21
 
 ### Přidáno

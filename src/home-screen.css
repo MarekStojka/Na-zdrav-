@@ -1,0 +1,6 @@
+/* "Přidat na plochu" item in the Více menu and its how-to dialog (HomeScreen.tsx). */
+.more-navigation>.home-screen-item{border-top:1px solid #c4b99b;color:var(--red)}
+.home-screen-help ol{margin:0 0 22px;padding-left:22px;line-height:1.6}
+.home-screen-help li+li{margin-top:6px}
+.home-screen-help .share-glyph{display:inline-block;padding:0 5px;border:1.5px solid currentColor;border-radius:4px;font-size:12px;line-height:1.4}
+.home-screen-help .primary{width:100%}
