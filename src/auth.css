@@ -1,9 +1,3 @@
-/* E-mail sign-in under the Google button (AuthDialog.tsx) and sign-out on the own profile (Profiles.tsx). */
-.auth-divider{display:flex;align-items:center;gap:10px;margin:18px 0 12px;font-size:12px;color:#7f896e}
-.auth-divider::before,.auth-divider::after{content:'';flex:1;border-top:1px solid #c8c2a9}
-.auth-email{display:grid;gap:10px}
-.auth-email label{display:grid;gap:5px;font-size:13px;font-weight:600}
-.auth-email input{width:100%;padding:12px;border:1.5px solid #b9b298;border-radius:7px;background:#fffdf6;font-size:16px}
-.auth-email .primary{margin-top:4px}
-.auth-modal .auth-links{margin:14px 0 16px}
+/* Google sign-in (AuthDialog.tsx) and sign-out on the own profile (Profiles.tsx). */
+.auth-modal>.secondary.full{margin-bottom:22px}
 .profile-buttons .signout-button{color:#813e2a}
