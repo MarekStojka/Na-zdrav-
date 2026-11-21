@@ -6,6 +6,13 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+### Přidáno
+- Při zápisu nového piva formulář nabídne podobná piva z knihovny („Není to některé z těchhle?“) a u pivovaru našeptává známé názvy, aby v knihovně nevznikaly duplicity.
+- Duplicitní piva se dají sloučit s oficiálními. Kdo pak napíše stejný neoficiální název, uloží se mu rovnou oficiální pivo, takže duplicita na nástěnce není vidět.
+
+### Změněno
+- Sloučeny první duplicity: Budvar 10 → Budvar Výčepní, Pilsner Urquell → pivovar Plzeňský Prazdroj, Radegast 12 Ryze hořká → Radegast Ryze hořká 12, Radegast 10 → Radegast Rázná 10 (po spuštění migrace v Supabase).
+
 ## [0.11.1] — 2026-11-21
 
 ### Změněno

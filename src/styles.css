@@ -339,3 +339,7 @@ html:has(.explore-grid){scroll-snap-type:none}
 .beer-count>button{width:44px;height:44px;display:grid;place-items:center;border:1px solid #9e9b82;background:#fff9e9;color:var(--green)}
 .beer-count>button:disabled{opacity:.4}
 .beer-count>output{min-width:44px;text-align:center;font:800 24px 'Barlow Condensed',sans-serif;color:var(--red)}
+.lookalikes{display:grid;gap:5px;margin:4px 0 12px;padding:10px;border:1px dashed #a83e30;background:#fbf1dc}
+.lookalikes>small{font-size:12px;color:#7a3a2c;line-height:1.5}
+.lookalikes>button{display:flex;align-items:center;justify-content:space-between;background:#fff9e9;color:var(--green);padding:10px;border:1px solid #c7c4a8;text-align:left}
+.lookalikes b,.lookalikes button small{display:block;font-size:12px}.lookalikes button small{font-size:10px;opacity:.8;margin-top:4px}
