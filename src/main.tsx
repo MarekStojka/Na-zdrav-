@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import App from './App';
 import './styles.css';
 import './home-screen.css';
+import './auth.css';
 import {installViewportTracking} from './viewport';
 import {installHomeScreen} from './HomeScreen';
 installViewportTracking();
