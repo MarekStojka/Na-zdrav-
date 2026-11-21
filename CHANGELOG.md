@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.16.0] — 2026-11-21
+
+### Přidáno
+- Popijeme je jen pro dospělé. Po přihlášení se každý účet jednou zeptá „Je ti 18 let?“ a odpověď si zapamatuje (i u stávajících účtů, zase jen jednou). Kdo odpoví „Ještě mi 18 není“, toho Popijeme odhlásí.
+
 ## [0.15.1] — 2026-11-21
 
 ### Opraveno
