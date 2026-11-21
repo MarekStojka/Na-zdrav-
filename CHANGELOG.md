@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.18.1] — 2026-11-21
+
+### Změněno
+- Přihlašovací okno má zase původní texty: „Tvůj Google účet. Tvůj pivní zápisník.“ a tlačítko „Přihlásit přes Google“.
+
 ## [0.18.0] — 2026-11-21
 
 ### Změněno
