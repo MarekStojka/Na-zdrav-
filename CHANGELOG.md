@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.13.1] — 2026-11-21
+
+### Změněno
+- „Přidat na plochu“ je v menu Více úplně nahoře. Na konci menu nebyla na telefonu vidět bez sjetí dolů.
+
 ## [0.13.0] — 2026-11-21
 
 ### Přidáno
