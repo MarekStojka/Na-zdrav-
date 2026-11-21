@@ -358,3 +358,13 @@ footer{flex-wrap:wrap}
 footer .legal-links a{color:inherit;font-size:11px;text-decoration:underline;text-underline-offset:2px}
 .auth-privacy a,.age-gate-legal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .age-gate .modal p.age-gate-legal{font-size:12px;margin-top:-8px}
+/* Account deletion (DeleteAccount.tsx): a quiet link at the end of the own profile, a red confirm in the dialog. */
+.delete-account{display:flex;justify-content:center;margin:28px 0 8px}
+.delete-account .delete-account-open{font-size:13px;color:#8a8f82;gap:6px;padding:10px 12px}
+.delete-account .delete-account-open:hover{color:#b74030}
+.delete-account-modal p{color:#5f6a5a;margin:0 0 14px}
+.delete-account-modal .delete-account-note{font-size:13px}
+.delete-account-modal .delete-account-note a{color:inherit;text-decoration:underline}
+.delete-account-modal .full{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px}
+.danger{background:#b74030;border:1px solid #8f2f22;color:#fff;font-weight:700;padding:13px 23px;border-radius:7px}
+.danger:hover{background:#9e3426}

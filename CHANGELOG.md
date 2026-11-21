@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.19.0] — 2026-11-21
+
+### Přidáno
+- Účet jde smazat přímo v aplikaci: ve vlastním profilu úplně dole „Smazat účet“. Po potvrzení zmizí profil, ochutnávky, fotky, komentáře, přátelé a vše ostatní; piva přidaná do katalogu zůstanou bez vazby na autora. Podmínky a zásady ochrany soukromí popisují nový postup.
+
 ## [0.18.1] — 2026-11-21
 
 ### Změněno
