@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.13.2] — 2026-11-21
+
+### Změněno
+- Návod „Popijeme na ploše“ je obrázkový: nakreslený telefon ukazuje krok po kroku, kam klepnout (místo bliká), a kroky se samy přehrávají dokola. Zvlášť pro iPhone se Safari, iPhone s Chromem a Android, správný se vybere sám.
+
 ## [0.13.1] — 2026-11-21
 
 ### Změněno
