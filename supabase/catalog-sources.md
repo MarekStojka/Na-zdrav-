@@ -57,3 +57,16 @@ Předvolené pivo se do databáze zapíše až prvním zápisem (trigger `privat
 - **Zubr** (5): https://www.zubr.cz/nase-piva
 - **Černá Hora** (13): https://pivo-cernahora.cz/2026/09/22/%f0%9f%8d%ba-svatovaclavsky-lezak-special-ktery-patri-k-podzimu/, https://pivo-cernahora.cz/2026/10/13/special-harmonie/, https://pivo-cernahora.cz/2026/11/09/svatomartinsky-special-dorazil/, https://www.pivobod.cz/kategorie-produktu/cerna-hora/
 - **Žatec** (18): https://sedmyschod.com/pivo-winter-ale/, https://sedmyschod.com/produkty/
+
+## Duplicity od uživatelů (od 21. 11. 2026)
+
+Když někdo zapíše pivo pod jiným názvem než oficiálním („Budvar · Budvar 10“ místo „Budějovický Budvar · Budvar Výčepní“):
+
+1. `npm run duplicity` vypíše kandidáty (čte jen veřejnou knihovnu z produkce) a k nim hotové SQL.
+2. Po kontrole se SQL spustí v Supabase SQL Editoru: `private.merge_beer(staré pivo, starý pivovar, pivo, pivovar, styl, zdroj)`
+   sloučí jedno pivo, `private.merge_brewery(starý, nový)` celý pivovar. Zápisy se přejmenují, „Chci ochutnat“ se přesune,
+   duplicitní řádek knihovny zmizí.
+3. Sloučení se zapamatuje jako alias (`private.beer_aliases`, `private.brewery_aliases`): kdo to samé napíše znovu,
+   uloží se mu rovnou oficiální název. Na nástěnce ani v knihovně tak duplicita nebude vidět.
+
+Formulář při zápisu nového piva nabízí podobná piva z knihovny a našeptává známé pivovary, aby duplicit vznikalo co nejméně.
