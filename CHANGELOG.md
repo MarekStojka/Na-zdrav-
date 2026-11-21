@@ -6,6 +6,12 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.15.0] — 2026-11-21
+
+### Přidáno
+- Popijeme otevřené z plochy jde obnovit tažením dolů nahoře na stránce, jako v prohlížeči.
+- Nová verze se načte sama, když se do Popijeme vrátíš (z plochy i v prohlížeči). Když máš zrovna otevřený formulář nebo menu, nahoře se jen ukáže „Je tu nová verze Popijeme. Načíst“. Popijeme už není potřeba kvůli novinkám úplně vypínat.
+
 ## [0.14.0] — 2026-11-21
 
 ### Přidáno
