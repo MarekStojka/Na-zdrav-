@@ -44,7 +44,7 @@ Migrace jsou v `supabase/migrations/`. `npm test` ověřuje základní izolaci i
 
 Retro styl inspirovaný českými pivními etiketami a zápalkovými nálepkami. Vlastní vektorová ilustrace `public/retro-toast.svg`, texturovaný krémový papír a cihlová/petrolejová paleta. Fonty jsou obsluhované z `public/fonts/` včetně licencí SIL OFL. UI je responzivní, formuláře mají čistý kontrastní podklad.
 
-Aplikace vyžaduje internet. Manifest umožňuje přidání na plochu; nejde o publikaci v obchodech s aplikacemi. Přidání kontaktních údajů provozovatele, informací o soukromí a způsobu žádosti o odstranění účtu zůstává k doplnění podle skutečných údajů provozovatele.
+Aplikace vyžaduje internet. Manifest umožňuje přidání na plochu; nejde o publikaci v obchodech s aplikacemi. Provozovatel, kontakt (admin@popijeme.cz), pravidla a ochrana soukromí jsou ve statických stránkách `public/podminky.html` a `public/soukromi.html` (vzhled `public/legal.css`), odkazy v patičce, přihlášení a dialogu 18+. Smazání účtu zatím jen na žádost e-mailem; při změně zpracování údajů (nový poskytovatel, analytika, cookies) je potřeba upravit i `soukromi.html`.
 
 
 ## Klub Popijeme — verze 0.4

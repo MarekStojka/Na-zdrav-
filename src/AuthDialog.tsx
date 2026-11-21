@@ -84,6 +84,6 @@ export default function AuthDialog({onClose,recovery=false}:{onClose:()=>void,re
       <button className="primary full" disabled={busy}><Mail size={17}/>{busy?'Chvilku…':mode==='login'?'Přihlásit se':'Poslat odkaz na nové heslo'}</button>
     </form>
     <div className="auth-links">{mode==='login'?<button onClick={()=>change('reset')}>Zapomenuté heslo</button>:<button onClick={()=>change('login')}>← Zpět na přihlášení</button>}</div>
-    <p className="muted auth-privacy">Popijeme je veřejná komunita. U každého zápisu zvolíš, zda ho sdílet. E-mail se ostatním nikdy nezobrazuje. Pro osoby od 18 let.</p>
+    <p className="muted auth-privacy">Popijeme je veřejná komunita. U každého zápisu zvolíš, zda ho sdílet. E-mail se ostatním nikdy nezobrazuje. Pro osoby od 18 let. Přihlášením souhlasíš s <a href="/podminky.html" target="_blank">podmínkami užívání</a>, jak s údaji zacházíme, popisují <a href="/soukromi.html" target="_blank">zásady ochrany soukromí</a>.</p>
   </section></div>;
 }

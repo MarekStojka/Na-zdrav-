@@ -352,3 +352,9 @@ html:has(.explore-grid){scroll-snap-type:none}
 .age-gate .modal p{color:#5f6a5a;margin:0 0 20px}
 .age-gate .modal .full{margin-top:10px}
 @media(max-width:700px){.age-gate .modal{display:flex;flex-direction:column;justify-content:center}}
+/* Links to the static legal pages (public/podminky.html, public/soukromi.html) in the footer, sign-in and 18+ dialog. */
+footer .legal-links{display:flex;flex-wrap:wrap;gap:6px 14px;position:static;background:none;border:0;padding:0;backdrop-filter:none;width:100%;justify-content:flex-start;margin-top:4px}
+footer{flex-wrap:wrap}
+footer .legal-links a{color:inherit;font-size:11px;text-decoration:underline;text-underline-offset:2px}
+.auth-privacy a,.age-gate-legal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.age-gate .modal p.age-gate-legal{font-size:12px;margin-top:-8px}

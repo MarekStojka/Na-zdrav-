@@ -40,6 +40,7 @@ export default function AgeGate({onConfirmed,refused,onRefused}:{onConfirmed:()=
       </>:<>
         <h2 id="age-gate-title">Je ti 18 let?</h2>
         <p>Popijeme je síť o pivu, a proto jen pro dospělé. Potvrď prosím, že ti je 18 let nebo víc. Zeptáme se jen jednou.</p>
+        <p className="age-gate-legal">Potvrzením souhlasíš s <a href="/podminky.html" target="_blank">podmínkami užívání</a>. Jak s údaji zacházíme, popisují <a href="/soukromi.html" target="_blank">zásady ochrany soukromí</a>.</p>
         {error&&<p className="auth-error" role="alert">{error}</p>}
         <button className="primary full" disabled={busy} onClick={confirm}>Ano, je mi 18 let</button>
         <button className="secondary full" disabled={busy} onClick={refuse}>Ještě mi 18 není</button>

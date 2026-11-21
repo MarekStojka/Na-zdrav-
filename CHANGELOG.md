@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.17.0] — 2026-11-21
+
+### Přidáno
+- Podmínky užívání (/podminky.html) a zásady ochrany soukromí (/soukromi.html): kdo Popijeme provozuje, kontakt admin@popijeme.cz, pravidla obsahu, nahlášení závadného obsahu, zrušení účtu, jaké údaje sbíráme a proč. Odkazy jsou v patičce, v přihlášení a v dialogu 18+.
+
 ## [0.16.0] — 2026-11-21
 
 ### Přidáno
