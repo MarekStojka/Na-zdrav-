@@ -6,6 +6,8 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.12.0] — 2026-11-21
+
 ### Přidáno
 - Při zápisu nového piva formulář nabídne podobná piva z knihovny („Není to některé z těchhle?“) a u pivovaru našeptává známé názvy, aby v knihovně nevznikaly duplicity.
 - Duplicitní piva se dají sloučit s oficiálními. Kdo pak napíše stejný neoficiální název, uloží se mu rovnou oficiální pivo, takže duplicita na nástěnce není vidět.
