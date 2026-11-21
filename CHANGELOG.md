@@ -6,6 +6,15 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.14.0] — 2026-11-21
+
+### Přidáno
+- Přihlášení e-mailem a heslem vedle Googlu, i se „Zapomenuté heslo“. Účty založené e-mailem před přechodem na Google se zase dostanou dovnitř. Přihlášení e-mailem funguje i v Popijeme přidaném na plochu iPhonu. Nové účty se zatím zakládají přes Google.
+- „Odhlásit se“ je na vlastním profilu (klepnutí na svůj avatar) vedle „Upravit profil“.
+
+### Změněno
+- Přihlašovací okno se jmenuje „Přihlášení a registrace“ a říká, že se přihlásíš stejně jako minule.
+
 ## [0.13.3] — 2026-11-21
 
 ### Změněno
