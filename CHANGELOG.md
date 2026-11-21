@@ -6,6 +6,11 @@ Vrácení změny: `git revert <commit>`; migrace databáze se revertem nevracej�
 
 ## [Unreleased]
 
+## [0.15.1] — 2026-11-21
+
+### Opraveno
+- Nový účet bez přezdívky se dá odhlásit. Po klepnutí na avatar se místo „Profil není dostupný“ ukáže „Tenhle účet ještě nemá přezdívku“ s tlačítky Nastavit profil a Odhlásit se.
+
 ## [0.15.0] — 2026-11-21
 
 ### Přidáno
